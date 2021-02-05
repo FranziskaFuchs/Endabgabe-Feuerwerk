@@ -1,9 +1,9 @@
 namespace Feuerwerk {
-    console.log("background")
-    //interface Vector{
-     //x:number;
-     // y:number;
- //}
+    //console.log("background")
+    interface Vector{
+        x:number;
+        y:number;
+ }
     
     export function drawCanvas(): void{
         let horizon: number = crc2.canvas.height / 2;
@@ -15,7 +15,7 @@ namespace Feuerwerk {
         drawSkyline({x: 0, y:horizon},75, 150);
 
     function drawBackground(): void {
-        console.log("Background");
+       // console.log("drawBackground");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
         gradient.addColorStop(0, "black");
@@ -28,7 +28,7 @@ namespace Feuerwerk {
     }
 
     function drawMoon(_position:Vector): void{
-        console.log("moon",_position);
+        //console.log("moon",_position);
 
         let r1: number = 35;
         let r2: number = 120;
@@ -47,7 +47,7 @@ namespace Feuerwerk {
     }
 
     function drawStar():void{
-        console.log("Star");
+        //console.log("Star");
 
         let starCount: number = 100;
 
@@ -60,7 +60,7 @@ namespace Feuerwerk {
     }
 
     function drawSingleStar(_position:Vector): void{
-        console.log("SingleStar",_position);
+       // console.log("SingleStar",_position);
 
         
         let r1: number = 1;
@@ -80,7 +80,7 @@ namespace Feuerwerk {
         }
 
         function drawSkyline(_position: Vector,_min:number, _max:number):void {
-            console.log("Skyline");
+          //  console.log("Skyline");
 
             let stepMin: number = 75;
             let stepMax: number = 150;

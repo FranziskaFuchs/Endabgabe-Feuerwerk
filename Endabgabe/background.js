@@ -1,10 +1,5 @@
 var Feuerwerk;
 (function (Feuerwerk) {
-    console.log("background");
-    //interface Vector{
-    //x:number;
-    // y:number;
-    //}
     function drawCanvas() {
         var horizon = Feuerwerk.crc2.canvas.height / 2;
         drawBackground();
@@ -13,7 +8,7 @@ var Feuerwerk;
         drawStar();
         drawSkyline({ x: 0, y: horizon }, 75, 150);
         function drawBackground() {
-            console.log("Background");
+            // console.log("drawBackground");
             var gradient = Feuerwerk.crc2.createLinearGradient(0, 0, 0, Feuerwerk.crc2.canvas.height);
             gradient.addColorStop(0, "black");
             gradient.addColorStop(0.6, "#0A122A");
@@ -22,7 +17,7 @@ var Feuerwerk;
             Feuerwerk.crc2.fillRect(0, 0, Feuerwerk.crc2.canvas.width, Feuerwerk.crc2.canvas.height);
         }
         function drawMoon(_position) {
-            console.log("moon", _position);
+            //console.log("moon",_position);
             var r1 = 35;
             var r2 = 120;
             var gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -36,7 +31,7 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawStar() {
-            console.log("Star");
+            //console.log("Star");
             var starCount = 100;
             for (var i = 0; i < starCount; i++) {
                 var x = Math.random() * 1000 + 100;
@@ -45,7 +40,7 @@ var Feuerwerk;
             }
         }
         function drawSingleStar(_position) {
-            console.log("SingleStar", _position);
+            // console.log("SingleStar",_position);
             var r1 = 1;
             var r2 = 3;
             var gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -59,7 +54,7 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawSkyline(_position, _min, _max) {
-            console.log("Skyline");
+            //  console.log("Skyline");
             var stepMin = 75;
             var stepMax = 150;
             var x = 0;
