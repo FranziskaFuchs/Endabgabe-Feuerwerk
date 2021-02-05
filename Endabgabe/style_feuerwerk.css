@@ -1,0 +1,46 @@
+h1{
+    margin-left: 550px;
+    font: arial;
+    font-size: 2em;
+}
+
+label{
+    font: arial;
+}
+
+canvas{
+    position:relative;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    border:solid;
+}
+
+#horizon{
+    border:black;
+}
+
+body{
+    background-color: rosybrown;
+}
+
+#form{
+    position: relative;
+    float: left;
+    height: max-content;
+    width: 420px;
+    border: solid;
+    background-color: rgb(173, 50, 71);
+    right: 10px;
+        }
+    
+#RocketList{ 
+    position:relative; 
+    float:right;
+    height: max-content;
+    width: 800px;
+    border: solid;
+    background-color:rgb(173, 50, 71);
+    right: 10px;
+    margin-top: 10px;
+}
