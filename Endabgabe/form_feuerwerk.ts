@@ -1,25 +1,27 @@
 namespace Feuerwerk{
-
-    window.addEventListener("load", handleLoad);
-    let form: HTMLFormElement;
-    let saveRocket_Btn: HTMLButtonElement;
-    let DeleteLast_Btn: HTMLButtonElement;
-    let DeleteAll_Btn: HTMLButtonElement;
-    let SaveServer_Btn: HTMLButtonElement;
-    let GetServerData_Btn: HTMLButtonElement;
-    //let serverPage: string=""
-
-}
+  window.addEventListener("load", handleLoad);
 
 function handleLoad(_event: Event):void {
-  
+  console.log("handleLoad_form");
 
-    generateContent(data);
+  let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#form");
+  let slider: HTMLInputElement = <HTMLInputElement>document.querySelector("input#amount");
 
-    form = <HTMLFormElement>document.querySelector("form#oderform");
-
-
-}
-    
+  form.addEventListener("change",handleChange);
+  slider.addEventListener("input", displayAmount);
 
 }
+
+function handleChange(_event:Event): void {
+ console.log("handleChange");
+ }
+
+function displayAmount(_event:Event): void{
+  console.log("displayAmount");
+
+  let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress");
+  let Amount: string = (<HTMLInputElement>_event.target).value;
+  progress.value = parseFloat(Amount);
+}
+ 
+ }

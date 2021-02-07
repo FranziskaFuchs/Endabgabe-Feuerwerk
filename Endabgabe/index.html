@@ -14,13 +14,10 @@
 </head>
 <body>
 
-    <div id="createFirework"> 
+    
     <h1>Create your Firework</h1>
-    </div>
 
     <canvas width=1000 height=500></canvas>
-
-
     <div> 
         <form id="form">
             <fieldset id="basicRocket">
@@ -58,7 +55,9 @@
             </br>
                 <legend>Particle Design</legend>
                 <label for="Amount">Amount of Particles</label></br>
-                <input type="range" id="Amount" name="Amount" > stk.
+                10
+                <input type="range" id="Amount" name="Amount" min = "10" max= "1000" step = "1" value= "20"> 
+                1000 
                 <legend>Form of Particle</legend></br>
                 <select name="ParticleForm">
                     <option value="rectangle">rectangle</option>

@@ -12,15 +12,17 @@ namespace Feuerwerk {
         drawMoon({x: 90, y: 80});
         drawSingleStar({x: 180, y: 200});
         drawStar();
-        drawSkyline({x: 0, y:horizon},75, 150);
+        drawSkyline({x: 0, y:horizon});
+        drawSkylinetwo({x:0, y: 300})
 
     function drawBackground(): void {
        // console.log("drawBackground");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
         gradient.addColorStop(0, "black");
-        gradient.addColorStop(0.6, "#0A122A");
-        gradient.addColorStop(1, "#610B5E");
+        gradient.addColorStop(0.4, "#0A122A");
+        gradient.addColorStop(0.8, "#3B0B17");
+        gradient.addColorStop(1,"#B43104");
 
         crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
@@ -79,11 +81,10 @@ namespace Feuerwerk {
 
         }
 
-        function drawSkyline(_position: Vector,_min:number, _max:number):void {
+        function drawSkyline(_position: Vector):void {
           //  console.log("Skyline");
 
-            let stepMin: number = 75;
-            let stepMax: number = 150;
+          
             let x: number = 0;
 
             crc2.save();
@@ -100,10 +101,10 @@ namespace Feuerwerk {
             crc2.lineTo(125,300);
 
             crc2.lineTo(125,75);
-            crc2.lineTo(150,75);
-            crc2.lineTo(150,300);
+            crc2.lineTo(200,75);
+            crc2.lineTo(200,300);
 
-            crc2.lineTo(125,120);
+            crc2.lineTo(200,120);
             crc2.lineTo(250,120);
             crc2.lineTo(250,300);
 
@@ -120,10 +121,10 @@ namespace Feuerwerk {
             crc2.lineTo(725,300);
 
             crc2.lineTo(725,90);
-            crc2.lineTo(770,90);
-            crc2.lineTo(770,300);
+            crc2.lineTo(800,90);
+            crc2.lineTo(800,300);
 
-            crc2.lineTo(770,70);
+            crc2.lineTo(800,70);
             crc2.lineTo(850,70);
             crc2.lineTo(850,300);
 
@@ -141,11 +142,103 @@ namespace Feuerwerk {
 
             crc2.closePath();
 
-            crc2.fillStyle= "#2E2E2E";
+            crc2.fillStyle= "#140718";
             crc2.fill();
 
             crc2.restore();
 
+
+        }
+
+        function drawSkylinetwo(_position: Vector):void{
+
+            let x: number = 0;
+            let y: number = 300;
+
+            crc2.save();
+            crc2.translate(_position.x,_position.y)
+
+            crc2.beginPath();
+            crc2.moveTo(0,300);
+            crc2.lineTo(0, 150);
+            crc2.lineTo(70,150);
+            crc2.lineTo(70,300);
+
+
+            crc2.lineTo(70,90);
+            crc2.lineTo(100,90);
+            crc2.lineTo(100,300);
+
+            crc2.lineTo(100,60);
+            crc2.lineTo(150,60);
+            crc2.lineTo(150,300);
+
+            crc2.lineTo(150,90);
+            crc2.lineTo(175,90);
+            crc2.lineTo(175,300);
+
+            crc2.lineTo(175,100);
+            crc2.lineTo(225,100);
+            crc2.lineTo(225,300);
+
+            crc2.lineTo(225,120);
+            crc2.lineTo(300,120);
+            crc2.lineTo(300,300);
+
+            crc2.lineTo(300,90);
+            crc2.lineTo(350,90);
+            crc2.lineTo(350,300);
+
+            crc2.lineTo(350,70);
+            crc2.lineTo(420,70);
+            crc2.lineTo(420,300);
+
+            crc2.lineTo(420,150);
+            crc2.lineTo(500,150);
+            crc2.lineTo(500,300);
+
+            crc2.lineTo(500,120);
+            crc2.lineTo(550,120);
+            crc2.lineTo(550,300);
+
+            crc2.lineTo(550,150);
+            crc2.lineTo(620,150);
+            crc2.lineTo(620,300);
+
+            crc2.lineTo(620,90);
+            crc2.lineTo(700,90);
+            crc2.lineTo(700,300);
+
+            crc2.lineTo(700,100);
+            crc2.lineTo(800,100);
+            crc2.lineTo(800,300);
+
+            crc2.lineTo(800,120);
+            crc2.lineTo(820,120);
+            crc2.lineTo(820,300);
+
+            crc2.lineTo(820,70);
+            crc2.lineTo(900,70);
+            crc2.lineTo(900,300);
+
+            crc2.lineTo(900,170);
+            crc2.lineTo(990,170);
+            crc2.lineTo(990,300);
+
+            crc2.lineTo(990,100);
+            crc2.lineTo(1200,100);
+            crc2.lineTo(1200,300);
+
+            crc2.lineTo(1200,70);
+            crc2.lineTo(1400,70);
+            crc2.lineTo(1400,300);
+
+            crc2.closePath();
+
+            crc2.fillStyle= "#1B0A2A";
+            crc2.fill();
+
+            crc2.restore();
 
         }
 

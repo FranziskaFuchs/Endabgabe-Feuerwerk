@@ -1,15 +1,20 @@
 var Feuerwerk;
 (function (Feuerwerk) {
     window.addEventListener("load", handleLoad);
-    var form;
-    var saveRocket_Btn;
-    var DeleteLast_Btn;
-    var DeleteAll_Btn;
-    var SaveServer_Btn;
-    var GetServerData_Btn;
-    //let serverPage: string=""
+    function handleLoad(_event) {
+        console.log("handleLoad_form");
+        var form = document.querySelector("div#form");
+        var slider = document.querySelector("input#amount");
+        form.addEventListener("change", handleChange);
+        slider.addEventListener("input", displayAmount);
+    }
+    function handleChange(_event) {
+        console.log("handleChange");
+    }
+    function displayAmount(_event) {
+        console.log("displayAmount");
+        var progress = document.querySelector("progress");
+        var Amount = _event.target.value;
+        progress.value = parseFloat(Amount);
+    }
 })(Feuerwerk || (Feuerwerk = {}));
-function handleLoad(_event) {
-    generateContent(data);
-    form = document.querySelector("form#oderform");
-}
