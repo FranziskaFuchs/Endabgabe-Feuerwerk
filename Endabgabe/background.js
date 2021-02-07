@@ -1,5 +1,6 @@
 var Feuerwerk;
 (function (Feuerwerk) {
+    console.log("background");
     function drawCanvas() {
         var horizon = Feuerwerk.crc2.canvas.height / 2;
         drawBackground();

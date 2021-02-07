@@ -1,5 +1,5 @@
 namespace Feuerwerk {
-    //console.log("background")
+    console.log("background")
     interface Vector{
         x:number;
         y:number;

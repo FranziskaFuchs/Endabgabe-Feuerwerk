@@ -2,14 +2,15 @@ var Feuerwerk;
 (function (Feuerwerk) {
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
-        console.log("handleLoad_form");
         var form = document.querySelector("div#form");
-        var slider = document.querySelector("input#amount");
+        var slider = document.querySelector("input#Amount");
         form.addEventListener("change", handleChange);
         slider.addEventListener("input", displayAmount);
     }
     function handleChange(_event) {
-        console.log("handleChange");
+        //console.log("_event");
+        var rocketname = document.querySelector("input#Rocketname");
+        console.log(rocketname.value);
     }
     function displayAmount(_event) {
         console.log("displayAmount");
