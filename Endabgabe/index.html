@@ -19,10 +19,8 @@
 
     <canvas width=1000 height=500></canvas>
 
-    <form> 
-    <div> 
-        <form id = "form">
-            <fieldset>
+    <form id="formular" name="formular"> 
+            <fieldset id = "basics">
                 <legend>Basics</legend>
                 <label for="Rocketname">Name</label></br>
                 <input type="text" id="Rocketname" name="Rocketname" placeholder="Create Rocket Name"></br>
@@ -42,6 +40,7 @@
             </p>  
              </fieldset>
 
+             <div id = "particle">
              <fieldset>
                  <legend>Particle Color</legend>
                  <label for="basecolor">Basecolor</label>
@@ -51,6 +50,7 @@
                  <input type="color" id="gradientcolor" name="gradientcolor">
             </p>
             </fieldset>
+        
             <fieldset>
             </br>
                 <legend>Particle Design</legend>
@@ -75,9 +75,8 @@
         
             </br>
             <button type="button" id="saveRocket_Btn">Save Rocket</button> 
-       
+       </div>
         </fieldset>
-     </div>
 </form>
 
 <div id="RocketList">
