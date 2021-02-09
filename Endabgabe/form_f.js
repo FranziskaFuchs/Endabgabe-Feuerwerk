@@ -12,8 +12,8 @@ var Feuerwerk;
         var RocketList = document.querySelector("div#RocketList");
         RocketList.innerHTML = "";
         var formData = new FormData(document.forms[0]);
-        for (var _i = 0, formData_1 = formData; _i < formData_1.length; _i++) {
-            var entry = formData_1[_i];
+        for (var _i = 0, _a = formData.entries; _i < _a.length; _i++) {
+            var entry = _a[_i];
             var item = document.querySelector("[value='" + entry[1] + "']");
             RocketList.innerHTML += item.name;
         }

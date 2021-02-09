@@ -1,6 +1,6 @@
 namespace Feuerwerk {
   window.addEventListener("load", handleLoad);
- 
+
 
   function handleLoad(_event: Event): void {
     console.log("start_handleLoad");
@@ -10,28 +10,28 @@ namespace Feuerwerk {
 
     form.addEventListener("change", handleChange);
     slider.addEventListener("input", displayAmount);
- }
-    
+  }
+
 
   function handleChange(_event: Event): void {
     let RocketList: HTMLDivElement = <HTMLDivElement>document.querySelector("div#RocketList");
     RocketList.innerHTML = "";
 
     let formData: FormData = new FormData(document.forms[0]);
-    for (let entry of formData) {
-        let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1]+ "']");
-        
-       
-        RocketList.innerHTML += item.name;
-    
- }
-}
+    for (let entry of formData.entries) {
+      let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
 
-function displayAmount(_event: Event): void {
-  console.log("displayAmount");
 
-  let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress");
-  let Amount: string = (<HTMLInputElement>_event.target).value;
-  progress.value = parseFloat(Amount);
+      RocketList.innerHTML += item.name;
+
+    }
+  }
+
+  function displayAmount(_event: Event): void {
+    console.log("displayAmount");
+
+    let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress");
+    let Amount: string = (<HTMLInputElement>_event.target).value;
+    progress.value = parseFloat(Amount);
+  }
 }
- }
