@@ -19,9 +19,10 @@ namespace Feuerwerk {
 
     let formData: FormData = new FormData(document.forms[0]);
    // console.log(formData);
-    for (let entry of formData.entries) {
-      let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']")
-      RocketList.innerHTML += item.name;
+    for (let entry of formData.entries()) {
+      console.log(entry);
+   //   let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']")
+   //   RocketList.innerHTML += item.name;
     }
   }
 
@@ -33,3 +34,4 @@ namespace Feuerwerk {
     progress.value = parseFloat(Amount);
   }
 }
+

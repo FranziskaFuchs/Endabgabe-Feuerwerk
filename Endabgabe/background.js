@@ -1,8 +1,9 @@
+"use strict";
 var Feuerwerk;
 (function (Feuerwerk) {
     console.log("background");
     function drawCanvas() {
-        var horizon = Feuerwerk.crc2.canvas.height / 2;
+        let horizon = Feuerwerk.crc2.canvas.height / 2;
         drawBackground();
         drawMoon({ x: 90, y: 80 });
         drawSingleStar({ x: 180, y: 200 });
@@ -11,7 +12,7 @@ var Feuerwerk;
         drawSkylinetwo({ x: 0, y: 300 });
         function drawBackground() {
             // console.log("drawBackground");
-            var gradient = Feuerwerk.crc2.createLinearGradient(0, 0, 0, Feuerwerk.crc2.canvas.height);
+            let gradient = Feuerwerk.crc2.createLinearGradient(0, 0, 0, Feuerwerk.crc2.canvas.height);
             gradient.addColorStop(0, "black");
             gradient.addColorStop(0.4, "#0A122A");
             gradient.addColorStop(0.8, "#3B0B17");
@@ -21,9 +22,9 @@ var Feuerwerk;
         }
         function drawMoon(_position) {
             //console.log("moon",_position);
-            var r1 = 35;
-            var r2 = 120;
-            var gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
+            let r1 = 35;
+            let r2 = 120;
+            let gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
             gradient.addColorStop(0, "HSLA(360,0%,70%,1)");
             gradient.addColorStop(1, "HSLA(360,0%,20%,0)");
             Feuerwerk.crc2.save();
@@ -35,18 +36,18 @@ var Feuerwerk;
         }
         function drawStar() {
             //console.log("Star");
-            var starCount = 100;
-            for (var i = 0; i < starCount; i++) {
-                var x = Math.random() * 1000 + 100;
-                var y = Math.random() * 300 + 20;
+            let starCount = 100;
+            for (let i = 0; i < starCount; i++) {
+                let x = Math.random() * 1000 + 100;
+                let y = Math.random() * 300 + 20;
                 drawSingleStar({ x: x, y: y });
             }
         }
         function drawSingleStar(_position) {
             // console.log("SingleStar",_position);
-            var r1 = 1;
-            var r2 = 3;
-            var gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
+            let r1 = 1;
+            let r2 = 3;
+            let gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
             gradient.addColorStop(0, "HSLA(360,0%,70%,1)");
             gradient.addColorStop(1, "HSLA(360,0%,20%,0)");
             Feuerwerk.crc2.save();
@@ -58,7 +59,7 @@ var Feuerwerk;
         }
         function drawSkyline(_position) {
             //  console.log("Skyline");
-            var x = 0;
+            let x = 0;
             Feuerwerk.crc2.save();
             Feuerwerk.crc2.translate(_position.x, _position.y);
             Feuerwerk.crc2.beginPath();
@@ -105,8 +106,8 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawSkylinetwo(_position) {
-            var x = 0;
-            var y = 300;
+            let x = 0;
+            let y = 300;
             Feuerwerk.crc2.save();
             Feuerwerk.crc2.translate(_position.x, _position.y);
             Feuerwerk.crc2.beginPath();
@@ -173,3 +174,4 @@ var Feuerwerk;
     }
     Feuerwerk.drawCanvas = drawCanvas;
 })(Feuerwerk || (Feuerwerk = {}));
+//# sourceMappingURL=background.js.map
