@@ -18,12 +18,10 @@ namespace Feuerwerk {
     RocketList.innerHTML = "";
 
     let formData: FormData = new FormData(document.forms[0]);
+   // console.log(formData);
     for (let entry of formData.entries) {
-      let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
-
-
+      let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']")
       RocketList.innerHTML += item.name;
-
     }
   }
 
