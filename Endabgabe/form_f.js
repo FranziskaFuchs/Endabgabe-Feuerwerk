@@ -13,7 +13,6 @@ var Feuerwerk;
         let RocketList = document.querySelector("div#RocketList");
         RocketList.innerHTML = "";
         let formData = new FormData(document.forms[0]);
-        // console.log(formData);
         for (let entry of formData.entries()) {
             console.log(entry);
             //   let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']")

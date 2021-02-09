@@ -14,7 +14,7 @@ var Feuerwerk;
             difference.scale(0.1);
             this.move.add(difference);
             this.move.x += Math.random() * 0.4 - 0.2;
-            this.add(this.move);
+            this.move.add(this.move);
         }
         displayParticle1() {
             Feuerwerk.crc2.fillStyle = "red";

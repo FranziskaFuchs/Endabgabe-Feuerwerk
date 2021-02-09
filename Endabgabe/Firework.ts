@@ -1,5 +1,5 @@
-module Firework {
-    import V2 = Vector.Vector2D;
+namespace Feuerwerk {
+    import V2 = Feuerwerk.Vector2D;
 
     export class Rocket extends V2{
         privat: particleFall: V2;

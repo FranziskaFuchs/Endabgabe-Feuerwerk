@@ -1,7 +1,7 @@
 "use strict";
-var Firework;
-(function (Firework) {
-    var V2 = Vector.Vector2D;
+var Feuerwerk;
+(function (Feuerwerk) {
+    var V2 = Feuerwerk.Vector2D;
     class Rocket extends V2 {
         constructor(_position) {
             super(_position.x, _position.y);
@@ -17,12 +17,12 @@ var Firework;
             this.add(this.move);
         }
         display() {
-            crc2.fillStyle = "#ffffff";
-            crc2.beginPath();
-            crc2.arc(this.x, this.y, this.explosionRadius, 0, 2 * Math.PI);
-            crc2.fill();
+            Feuerwerk.crc2.fillStyle = "#ffffff";
+            Feuerwerk.crc2.beginPath();
+            Feuerwerk.crc2.arc(this.x, this.y, this.explosionRadius, 0, 2 * Math.PI);
+            Feuerwerk.crc2.fill();
         }
     }
-    Firework.Rocket = Rocket;
-})(Firework || (Firework = {}));
+    Feuerwerk.Rocket = Rocket;
+})(Feuerwerk || (Feuerwerk = {}));
 //# sourceMappingURL=Firework.js.map
