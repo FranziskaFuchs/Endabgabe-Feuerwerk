@@ -1,11 +1,41 @@
-h1{
-    margin-left: 700px;
-    font-style: arial;
-    font-size: 2em;
+body{
+    background-color: rosybrown;
 }
 
-label{
-    font: arial;
+header{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+h2{
+    text-align: center;
+}
+
+div{
+    display:grid;
+ }
+
+form{
+    position: relative;
+    height: max-content;
+    width: 420px;
+    border: solid;
+    margin-left: 20px;
+    background-color: rgb(173, 50, 71);
+    right: 10px;
+        }
+
+#buttonRocket{
+    float: left;
+    width: 200px;
+    margin: 1em;
+}
+
+#rocketlist_Btn{ 
+    margin: 1em;
+    width: 200px;
+    background-color:rgb(173, 50, 71);
+
 }
 
 canvas{
@@ -18,37 +48,4 @@ canvas{
 
 #horizon{
     border:black;
-}
-
-body{
-    background-color: rosybrown;
-}
-
-form{
-    position: relative;
-    height: max-content;
-    width: 420px;
-    border: solid;
-    margin-left: 20px;
-    background-color: rgb(173, 50, 71);
-    right: 10px;
-        }
-    
-#rocketlist{ 
-    float:left;
-    height: 300px;
-    width: 400px;
-    border: solid;
-    background-color:rgb(173, 50, 71);
-    
-}
-
-#rocketlist_Btn{
-    float: right;
-    position: relative;
-    margin-top: 270px;
-    width: 800px;
-    border:solid;
-    background-color:rgb(173, 50, 71);
-
-}
+ }

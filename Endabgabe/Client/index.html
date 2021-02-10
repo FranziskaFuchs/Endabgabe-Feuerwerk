@@ -5,12 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="background.js"></script>
-    <script src="form_f.js"></script>
-    <script src="main.js"></script>
-    <script src="Vector.js"></script>
-    <script src="Rocket.js"></script>
-    <script src="Particle.js"></script>
-    <script src="generateContent."></script>
+    <script src="Client_form.js"></script>
     <link href="style_feuerwerk.css" rel="stylesheet">
     <title>Your Firework></title>
 </head>
@@ -21,76 +16,87 @@
         <h1>Your Firework</h1>
     </header>
 
-    <canvas width=1000 height=500></canvas>
+    <canvas width=1000 height=500 style="background: url(background.js)" ></canvas>
 
-    <form>
-        <div id="form">
+    >
+        <div id="rocketComponents">
+            <form method ="GET"> 
             <h2>Choose here</h2>
-            <fieldset>
+            <fieldset id = "name">
                 <legend>Name</legend>
-                <input type="text" id="Rocketname" name="Rocketname" placeholder="Create here"></br>
+                <input type="text"  name="Rocketname" placeholder="Create here"></br>
             </fieldset>
-            <fieldset>
+            <fieldset id="explosion">
                 <legend>Explosion radius</legend>
-                <input type="radio" id="small" name="explosion" value="small" />
+                <input type="radio" id="small_R" name="Explosion" value="small" />
                 <label for="small">small</label></br>
-                <input type="radio" id="medium" name="explosion" value="medium" />
+                <input type="radio" id="medium_R" name="Explosion" value="medium" />
                 <label for="medium">medium</label></br>
-                <input type="radio" id="big" name="explosion" value="big" />
+                <input type="radio" id="big_R" name="Explosion" value="big" />
                 <label for="big">big</label>
             </fieldset>
-            <fieldset>
+            <fieldset id="lifetime">
                 <legend>Lifetime</legend>
-                <input type="text" id="lifetime" name="lifetime"> sec</br>
+                <input type="number" name="Lifetime"> sec</br>
             </fieldset>
-            <fieldset>
+            <fieldset id="color">
                 <legend>Particle Color</legend>
-                <input type="color" id="color" name="color">
+                <input type="color" name="color">
             </fieldset>
             <fieldset>
                 <legend>Amount of Particle</legend>
                 <span id="slider">
                     10
-                    <input type="range" id="amount" name="amount" min="10" max="1000" step="1" value="10">
+                    <input type="range" id="amount" name="Amount" value="10" min="10" max="1000" step="1">
                     1000
                 </span>
             </fieldset>
-            <fieldset>
+            <fieldset id="form">
                 <legend>Form of Particle</legend>
-                <select name="particleForm" id="particleForm">
+                <select name="ParticleForm" id="particleForm">
                     <option value="rectangle">rectangle</option>
                     <option value="dot">dot</option>
                     <option value="line">line</option>
                 </select>
             </fieldset>
-            <fieldset>
+            <fieldset id ="particleSize">
                 <legend>Size of Particle</legend>
-                <input type="radio" id="smallParticle" name="particleSize" value="smallParticle" />
+                <input type="radio" id="small_P" name="particleSize" value="smallParticle" />
                 <label for="smallParticle">small</label></br>
-                <input type="radio" id="mediumParticle" name="particleSize" value="mediumParticle" />
+                <input type="radio" id="medium_P" name="particleSize" value="mediumParticle" />
                 <label for="mediumParticle">medium</label></br>
-                <input type="radio" id="bigParticle" name="particleSize" value="bigParticle">
+                <input type="radio" id="big_P" name="particleSize" value="bigParticle">
                 <label for="bigParticle">big</label>
-            </fieldset>
-            </br>
-            <button type="button" id="saveRocket">save Rocket</button></br>
-            
             </fieldset>
         </div>
     </form>
 
-    <div>
+    <div id="buttonRocket">
+        <button id="saveRocket">save Rocket</button>
+        <button id="updateRocket">update Rocket</button>
+    </div>
+
+    </div>
+
+
+    <div id="compilationContainer">
         <h2>Your Rockets</h2>
+
         <div id="rocketlist"></div>
 
+        <div id="rocketlist_Btn">
+            <button id="reset_Btn">reset</button>
+            <button id="saveServer_Btn" type="button" form="rockelistForm">Save your Rockets</button>
+            <button id="delete_Btn">delete rocket</button>
+
+            <div id="showUp">
+                <button id="show_Btn">show your rockets</button>
+                <div id="showUpContent"></div>
+            </div>
+        </div>
     </div>
 
-    <div id="rocketlist_Btn">
-        <button type="button" id="DeleteLast_Btn">Delete Last Rocket</button>
-        <button type="button" id="DeleteAll_Btn">Delete All Rockets</button>
-        <button type="button" id="SaveServer_Btn">Save your Rockets to Database</button>
-        <button type="button" id="GetServerData_Btn">Get your saved Rockets back</button>
-    </div>
+
 </body>
 
 </html>
