@@ -21,84 +21,57 @@
     <canvas width=1000 height=500></canvas>
     
 
-    <form id="formular" name="formular">
-        <fieldset id="basics">
-            <div>
-            <legend>Basics</legend>
-            <label for="Rocketname">Name</label></br> 
-            <input type="text" id="Rocketname" name="Rocketname" placeholder="Create Rocket Name"></br>
-            </div>
-            <div>
-            <legend>Explosionsradius</legend>
-            <input type="radio" id="small" name="explosionRadius" value="small" />
-            <label for="small">small</label></br >
-            <input type="radio" id="medium" name="explosionRadius" value="medium" />
-            <label for="medium">medium</label>
-            
-            <input type="radio" id="big" name="explosionRadius" value="big" />
-            <label for="big">big</label>
-            </div>
+    <form id="formular" methode = "GET">
+        <div>
 
-            <div>
-                <label for="lifetime">Lifetime</label></br>
-                <input type="text" id="lifetime" name="lifetime"> sec</br>
-            </div>
-        </fieldset >
-
-        
-            <fieldset id = "particle">
-                <div>
-                <legend>Particle Color</legend>
-                <label for="basecolor">Basecolor</label>
-                <input type="color" id="basecolor" name="basecolor">
-                </div>
-                <div>
-                <legend> Gradient Color</legend>
-                    <label for="gradientcolor">Gradient</label>
-                    <input type="color" id="gradientcolor" name="gradientcolor">
-                </div
+            <h2>Choose here</h2>
+            <fieldset id="RocketName" placeholder = "Create Rocket Name">
+                <legend>Rocket Name </legend>
             </fieldset>
-
-            <fieldset id = "particleDesign">
-                <div>
-                <legend>Particle Design</legend>
-                <label for="Amount">Amount of Particles</label></br>
-                10
-                <input type="range" id="Amount" name="Amount" min="10" max="1000" step="1" value="20">
+            <fieldset id ="explosionRadius">
+             <legend>Explosions Radius</legend>
+             </fieldset>
+            <fieldset id ="Lifetime">
+                <legend>Lifetime</legend>
+            </fieldset >
+            <fieldset id = "BaseColor">
+               <legend>Base Color</legend>
+            </fieldset>
+            <fieldset>
+                <legend>Amount of Particle</legend>
+                <span id ="slider">
+                    <span>
+                        10
+                        <input type = "range" name="Amount" min ="10" max="1000" step="1" value ="1000">
                         1000
-                </div>
-                <div>
-                <legend>Form of Particle</legend></br>
-                <select name="ParticleForm">
-                    <option value="rectangle">rectangle</option>
-                    <option value="dot">dot</option>
-                    <option value="line">line</option>
-                </select></div>
-                <div>
-                <legend>Size of Particle</legend></br >
-                <input type="radio" id="smallParticle" name="smallParticle" value="smallParticle" />
-                <label for="smallParticle">small</label></br >
-                <input type="radio" id="mediumParticle" name="mediumParticle" value="mediumParticle" />
-                <label for="mediumParticle">medium</label></br >
-                <input type="radio" id="bigParticle" name="bigParticle" value="bigParticle">
-                <label for="bigParticle">big</label>
-
-                </div>
-                <div>
+                        </span>
+                        <progress max="1000" value="1000" />
+                        </span>
+                        </fieldset>
+            <fieldset id = "ParticleForm">
+                <legend>Form of Particle</legend>
+            </fieldset>
+            <fieldset id ="ParticleSize">
+                <legend>Size of Particle</legend>
+            </fieldset>
+            <fieldset>
             <button type="button" id="saveRocket_Btn">Save Rocket</button>
-        </div >
         </fieldset>
     </form>
    
-    <div id = "RocketList">
-            <legend>Deine erstellten Rakten:</legend>
+    <div>
+        <h2>Your Rockets</h2>
+        <div id = "RocketList">
+
+            ... 
+
     </div>
-    <div id = "RocketList_Btn"> 
+    
             <button type="button" id="DeleteLast_Btn">Delete Last Rocket</button>
             <button type="button" id="DeleteAll_Btn">Delete All Rockets</button>
             <button type="button" id="SaveServer_Btn">Save your Rockets to Database</button>
             <button type="button" id="GetServerData_Btn">Get your saved Rockets back</button>
-    </div>
+</div>   
 
 </body >
 
