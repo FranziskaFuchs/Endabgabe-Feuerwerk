@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/FranziskaFuchs/Endabgabe-Feuerwerk#readme",
   "dependencies": {
+    "node": "^15.8.0",
     "node.js": "0.0.1-security"
   }
 }
