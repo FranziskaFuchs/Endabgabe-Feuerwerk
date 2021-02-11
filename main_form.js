@@ -1,33 +1,21 @@
 "use strict";
 var Feuerwerk;
 (function (Feuerwerk) {
-    console.log("load_main");
-    window.addEventListener("load", handleLoad);
-    let imgData;
+    console.log("main_form");
+    window.addEventListener("load", handleLoadForm);
     let form;
     // let url: string = Link zur Herokuapp
-    let url = "index.html";
-    window.addEventListener("load", handleLoad);
+    //let url: string = "index.html";
+    let Submit_Btn;
     let canvas;
     let fireworks = [];
     let savedArray = [];
     let fps = 100;
-    async function handleLoad(_event) {
-        console.log("load");
-        let canvas = document.querySelector("canvas");
-        if (!canvas)
-            return;
-        Feuerwerk.crc2 = canvas.getContext("2d");
-        Feuerwerk.drawCanvas();
-        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
+    // let serverPage: string ="";
+    async function handleLoadForm(_event) {
         form = document.querySelector("form");
-        canvas = document.querySelector("canvas");
-        let Submit_Btn = document.getElementById("submit");
         canvas.addEventListener("click", handleCanvasClick);
-        Submit_Btn.addEventListener("click", sendFirework);
-        Feuerwerk.crc2.fillStyle = "black";
-        Feuerwerk.crc2.fillRect(0, 0, canvas.width, canvas.height);
-        Feuerwerk.crc2.fill;
+        Submit_Btn.addEventListener("click", sendFireWork);
         window.setInterval(update, 1000 / fps);
         getSelect();
     }
@@ -35,7 +23,7 @@ var Feuerwerk;
         let tempPosition = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
         createFirework(tempPosition);
     }
-    async function sendFirework(_event) {
+    async function sendFireWork(_event) {
         console.log("submit firework");
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
@@ -44,7 +32,7 @@ var Feuerwerk;
         savedArray.push(formData);
         alert(responseText);
     }
-    Feuerwerk.sendFirework = sendFirework;
+    Feuerwerk.sendFireWork = sendFireWork;
     async function getSelect() {
         console.log(savedArray.length);
         let select = document.getElementById("save");
@@ -52,10 +40,10 @@ var Feuerwerk;
             let options = savedArray[i];
             let element = document.createElement("option");
             element.textContent = options.name;
-            select ? .appendChild(element) : ;
+            select.appendChild(element);
         }
     }
-    function createFirework(tempPosition) {
+    function createFirework(_tempPosition) {
         console.log("create firework");
         let explosionTarget = document.getElementById("explosionSize");
         let explosionValue = explosionTarget.value;
@@ -69,8 +57,8 @@ var Feuerwerk;
         let typeValue = typeTarget.value;
         let sizeTarget = document.getElementById("particleSize");
         let sizeValue = sizeTarget.value;
-        let firework = new firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
-        firework.push(firework);
+        let firework = new Feuerwerk.Firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
+        fireworks.push(firework);
     }
     function update() {
         Feuerwerk.crc2.globalAlpha = 0.05;
@@ -87,4 +75,4 @@ var Feuerwerk;
         }
     }
 })(Feuerwerk || (Feuerwerk = {}));
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=main_form.js.map

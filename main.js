@@ -17,24 +17,21 @@ var Feuerwerk;
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
+        //let Submit_Btn: HTMLElement = document.getElementById("submit");
         Feuerwerk.crc2 = canvas.getContext("2d");
+        //   canvas.addEventListener("click", handleCanvasClick);
+        // Submit_Btn.addEventListener("click", sendFirework);
         Feuerwerk.drawCanvas();
         imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
         form = document.querySelector("form");
         canvas = document.querySelector("canvas");
-        let Submit_Btn = document.getElementById("submit");
-        canvas.addEventListener("click", handleCanvasClick);
-        Submit_Btn.addEventListener("click", sendFirework);
-        Feuerwerk.crc2.fillStyle = "black";
-        Feuerwerk.crc2.fillRect(0, 0, canvas.width, canvas.height);
-        Feuerwerk.crc2.fill;
         window.setInterval(update, 1000 / fps);
         getSelect();
     }
-    function handleCanvasClick(_event) {
-        let tempPosition = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
-        createFirework(tempPosition);
-    }
+    //  function handleCanvasClick(_event: MouseEvent): void {
+    //     let tempPosition: Vector = new Vector(_event.offsetX, _event.offsetY);
+    //     createFirework(tempPosition);
+    // }
     async function sendFirework(_event) {
         console.log("submit firework");
         let formData = new FormData(form);
@@ -55,23 +52,23 @@ var Feuerwerk;
             select ? .appendChild(element) : ;
         }
     }
-    function createFirework(tempPosition) {
-        console.log("create firework");
-        let explosionTarget = document.getElementById("explosionSize");
-        let explosionValue = explosionTarget.value;
-        let lifetimeTarget = document.getElementById("lifetime");
-        let lifetimeValue = lifetimeTarget.value;
-        let colorTarget = document.getElementById("color");
-        let colorValue = colorTarget.value;
-        let amountTarget = document.getElementById("amount");
-        let amountValue = amountTarget.value;
-        let typeTarget = document.getElementById("particleType");
-        let typeValue = typeTarget.value;
-        let sizeTarget = document.getElementById("particleSize");
-        let sizeValue = sizeTarget.value;
-        let firework = new firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
-        firework.push(firework);
-    }
+    //  function createFirework(tempPosition: Vector) {
+    //     console.log("create firework");
+    //     let explosionTarget: HTMLInputElement = document.getElementById("explosionSize");
+    //     let explosionValue = explosionTarget.value;
+    //    let lifetimeTarget: HTMLInputElement = document.getElementById("lifetime");
+    //     let lifetimeValue = lifetimeTarget.value;
+    //      let colorTarget: HTMLInputElement = document.getElementById("color");
+    //     let colorValue = colorTarget.value;
+    //    let amountTarget: HTMLInputElement = document.getElementById("amount");
+    //     let amountValue = amountTarget.value;
+    //    let typeTarget: HTMLInputElement = document.getElementById("particleType");
+    //   let typeValue = typeTarget.value;
+    //   let sizeTarget: HTMLInputElement = document.getElementById("particleSize");
+    //   let sizeValue = sizeTarget.value;
+    //   let firework: Firework = new Firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
+    //   fireworks.push(firework);
+    //   }
     function update() {
         Feuerwerk.crc2.globalAlpha = 0.05;
         Feuerwerk.crc2.fillStyle = "black";

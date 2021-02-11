@@ -16,7 +16,6 @@ h2{
 
 
 form{
-   
     height: max-content;
     width: 420px;
     border: solid;
@@ -25,9 +24,25 @@ form{
     right: 10px;
         }
 
+#rocketlist{
+    margin-top: 1em;
+    text-align: center;
+    border:solid;
+    color: white;
+    border-width: thin;
+    width: 20em;
+    height: 25em;
+    background-color: rgb(173, 50, 71) ;
+}
+
+div{
+    width: auto;
+}
+
 button{
+    margin-top: 1em;
     background-color:thistle;
-    align:center;
+    text-align:center;
     width: auto;
     cursor: pinter;
 }

@@ -1,45 +1,23 @@
 namespace Feuerwerk {
-    console.log("load_main");
+    console.log("main_form");
 
-    window.addEventListener("load",handleLoad);
-    export let crc2: CanvasRenderingContext2D;
-    let imgData: ImageData;
-
+  window.addEventListener("load", handleLoadForm);
     let form: HTMLFormElement;
     // let url: string = Link zur Herokuapp
-    let url: string = "index.html";
-
-    window.addEventListener("load", handleLoad);
+    //let url: string = "index.html";
+    let Submit_Btn: any;
     let canvas: HTMLCanvasElement;
-
-    let fireworks: Firework[] = [];
+    let fireworks: Firework [] = [];
     let savedArray: any[] = [];
     let fps: number = 100;
-
-    async function handleLoad(_event: Event): Promise<void> {
-        console.log("load");
-
-        let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
-        if(!canvas)
-        return;
-        
-        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-        drawCanvas();
-        imgData = crc2.getImageData(0,0,canvas.width, canvas.height);
-
+   // let serverPage: string ="";
+   
+    async function handleLoadForm(_event: Event): Promise<void> {
 
         form = <HTMLFormElement>document.querySelector("form");
-        canvas = document.querySelector("canvas");
-        
-        let Submit_Btn: HTMLElement = document.getElementById("submit");
 
         canvas.addEventListener("click", handleCanvasClick);
-        Submit_Btn.addEventListener("click", sendFirework);
-
-        crc2.fillStyle = "black";
-        crc2.fillRect(0, 0, canvas.width, canvas.height);
-        crc2.fill
+        Submit_Btn.addEventListener("click", sendFireWork);
 
         window.setInterval(update, 1000 / fps);
 
@@ -53,7 +31,7 @@ namespace Feuerwerk {
         createFirework(tempPosition);
 
     }
-    export async function sendFirework(_event: MouseEvent): Promise<void> {
+    export async function sendFireWork(_event: MouseEvent): Promise<void> {
         console.log("submit firework");
 
         let formData: FormData = new FormData(form);
@@ -64,41 +42,42 @@ namespace Feuerwerk {
         alert(responseText);
     }
 
-    async function getSelect() {
+    async function getSelect(){
         console.log(savedArray.length);
         let select = document.getElementById("save");
-        for (let i: number = 0; i < savedArray.length; i++) {
+        for (let i: number = 0; i < savedArray.length; i++){
             let options = savedArray[i];
             let element = document.createElement("option");
             element.textContent = options.name;
-            select?.appendChild(element);
+            select.appendChild(element);
+    
         }
 
-    }
+     }
 
-    function createFirework(tempPosition: Vector) {
+    function createFirework(_tempPosition: Vector) {
         console.log("create firework");
 
-        let explosionTarget: HTMLElement = document.getElementById("explosionSize");
+        let explosionTarget: HTMLInputElement = document.getElementById("explosionSize");
         let explosionValue = explosionTarget.value;
 
-        let lifetimeTarget: HTMLElement = document.getElementById("lifetime");
+        let lifetimeTarget: HTMLInputElement = document.getElementById("lifetime");
         let lifetimeValue = lifetimeTarget.value;
 
-        let colorTarget: HTMLElement = document.getElementById("color");
+        let colorTarget: HTMLInputElement = document.getElementById("color");
         let colorValue = colorTarget.value;
 
-        let amountTarget: HTMLElement = document.getElementById("amount");
+        let amountTarget: HTMLInputElement = document.getElementById("amount");
         let amountValue = amountTarget.value;
 
-        let typeTarget: HTMLElement = document.getElementById("particleType");
+        let typeTarget: HTMLInputElement = document.getElementById("particleType");
         let typeValue = typeTarget.value;
 
-        let sizeTarget: HTMLElement = document.getElementById("particleSize");
+        let sizeTarget: HTMLInputElement = document.getElementById("particleSize");
         let sizeValue = sizeTarget.value;
 
-        let firework: Firework = new firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
-        firework.push(firework);
+        let firework: Firework = new Firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
+        fireworks.push(firework);
     }
 
     function update() {
