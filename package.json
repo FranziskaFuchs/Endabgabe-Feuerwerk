@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FranziskaFuchs/Endabgabe-Feuerwerk/issues"
   },
-  "homepage": "https://github.com/FranziskaFuchs/Endabgabe-Feuerwerk#readme"
+  "homepage": "https://github.com/FranziskaFuchs/Endabgabe-Feuerwerk#readme",
+  "dependencies": {
+    "node.js": "0.0.1-security"
+  }
 }
