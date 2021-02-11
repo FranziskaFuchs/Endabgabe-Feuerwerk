@@ -1,115 +1,101 @@
 namespace Feuerwerk {
-    console.log("load_main");
 
     window.addEventListener("load", handleLoad);
+
+    export let canvas: HTMLCanvasElement | null;
     export let crc2: CanvasRenderingContext2D;
+
     let imgData: ImageData;
-
     let form: HTMLFormElement;
-    // let url: string = Link zur Herokuapp
-    let url: string = "index.html";
+    let slider_E: HTMLInputElement = <HTMLInputElement>document.querySelector("input#explosion");
+    let slider_A: HTMLInputElement = <HTMLInputElement>document.querySelector("input#lifetime");
+    let slider_L: HTMLInputElement = <HTMLInputElement>document.querySelector("input#amount");
+    let slider_S: HTMLInputElement = <HTMLInputElement>document.querySelector("input#particleSize");
 
-    window.addEventListener("load", handleLoad);
-    let canvas: HTMLCanvasElement;
 
-    let fireworks: Firework[] = [];
-    let savedArray: any[] = [];
-    let fps: number = 100;
+    //   let savedRockets: Rocket[]; // soll alle Raketen der Database enthalten
+    //  let rockets: Rocket[]; // Raketen in rocketlist
 
-    async function handleLoad(_event: Event): Promise<void> {
-        console.log("load");
 
-        let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
+    function handleLoad(_event: Event): void {
+        console.log("load Feuerwerk_form");
+
+        canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
             return;
-        //let Submit_Btn: HTMLElement = document.getElementById("submit");
-
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-     //   canvas.addEventListener("click", handleCanvasClick);
-        // Submit_Btn.addEventListener("click", sendFirework);
         drawCanvas();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
+
+        canvas.addEventListener("click", handleClick); // durch klicken auf den Canvas, sollen Raketen explodieren können
 
 
         form = <HTMLFormElement>document.querySelector("form");
-        canvas = document.querySelector("canvas");
+        form.addEventListener("change", handleChange);
 
-        window.setInterval(update, 1000 / fps);
+        slider_E.addEventListener("input", displayExplosion);
+        slider_A.addEventListener("input", displayLifetime);
+        slider_L.addEventListener("input", displayAmount);
+        slider_S.addEventListener("input", displayParticleSize);
 
-        getSelect();
+        //   let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=Submit_Btn");
+        //   submit.addEventListener("click",sendRocket); //erstellte Rakete zu rocketlist hinzufügen.
 
     }
 
-  //  function handleCanvasClick(_event: MouseEvent): void {
 
-   //     let tempPosition: Vector = new Vector(_event.offsetX, _event.offsetY);
-   //     createFirework(tempPosition);
+    function handleChange(_event: Event): void {
+        let rocketlist: HTMLDivElement = <HTMLDivElement>document.querySelector("div#rocketlist");
+        rocketlist.innerHTML = "";
 
-   // }
-    export async function sendFirework(_event: MouseEvent): Promise<void> {
-        console.log("submit firework");
+        let formData: FormData = new FormData(document.forms[0]);
+        console.log(formData);
+        for (let entry of formData) {
+            let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
 
-        let formData: FormData = new FormData(form);
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
-        let response: Response = await fetch(url + "?" + query.toString());
-        let responseText: string = await response.text();
-        savedArray.push(formData);
-        alert(responseText);
-    }
-
-    async function getSelect() {
-        console.log(savedArray.length);
-        let select = document.getElementById("save");
-        for (let i: number = 0; i < savedArray.length; i++) {
-            let options = savedArray[i];
-            let element = document.createElement("option");
-            element.textContent = options.name;
-            select?.appendChild(element);
+            rocketlist.innerHTML += item.name
+           
         }
+    }
+
+    function displayExplosion(_event: Event): void {
+        let explosion: string = (<HTMLInputElement>_event.target).value;
+        console.log(explosion);
 
     }
 
-  //  function createFirework(tempPosition: Vector) {
-   //     console.log("create firework");
-
-   //     let explosionTarget: HTMLInputElement = document.getElementById("explosionSize");
-   //     let explosionValue = explosionTarget.value;
-
-    //    let lifetimeTarget: HTMLInputElement = document.getElementById("lifetime");
-   //     let lifetimeValue = lifetimeTarget.value;
-
-  //      let colorTarget: HTMLInputElement = document.getElementById("color");
-   //     let colorValue = colorTarget.value;
-
-    //    let amountTarget: HTMLInputElement = document.getElementById("amount");
-   //     let amountValue = amountTarget.value;
-
-    //    let typeTarget: HTMLInputElement = document.getElementById("particleType");
-     //   let typeValue = typeTarget.value;
-
-     //   let sizeTarget: HTMLInputElement = document.getElementById("particleSize");
-     //   let sizeValue = sizeTarget.value;
-
-     //   let firework: Firework = new Firework(tempPosition, explosionValue, lifetimeValue, colorValue, amountValue, typeValue, sizeValue * fps);
-    //   fireworks.push(firework);
- //   }
-
-    function update() {
-        crc2.globalAlpha = 0.05;
-        crc2.fillStyle = "black";
-        crc2.fillRect(0, 0, canvas.width, canvas.height);
-        crc2.fill
-        crc2.globalAlpha = 1;
-
-        for (let i: number = fireworks.length - 1; i >= 0; i--) {
-            fireworks[i].draw();
-            fireworks[i].update();
-            if (!fireworks[i].isAlive()) {
-                fireworks.splice(i, 1);
-            }
-        }
+    function displayAmount(_event: Event): void {
 
     }
+
+    function displayLifetime(_event: Event): void {
+
+    }
+
+    function displayParticleSize(_event: Event): void {
+
+    }
+
+
+    function handleClick(_event: MouseEvent): void {
+        //   let tempPosition: Vector = new Vector(_event.offsetX, _evnet.offsetY);
+        //    createFirework(tempPosition)
+        console.log("handleClick");
+    }
+
+    // function createSavedRockets(_rocketData: string[],_index:string): void{
+    //    let section: HTMLElement | null = document.getElementById("rockets");
+
+    //     console.log(_rocketData);
+    //    let rocket: Rocket;
+    //    switch(_rocketData[4]){
+    //        case "rectangle":
+    //       break;
+    //      case "dot":
+    //       break;
+    //      case: "line":
+    //      break;
+    //    }
+    // }
 
 }
