@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="style_feuerwerk.css">
+    <script src="background.js"></script>
+    <script src="main.js"></script>
+    <script src="Vector.js"></script>
+    <script src="particle.js"></script>
+    <script src="firework.js"></script>
+    <script src="rectangle.js"></script>
+    <script src="dot.js"></script>
+    <script src="line.js"></script>
+    <sript src="server/server.js"></sript>
+    <title>Your Firework></title>
+</head>
+
+<body>
+    <header>
+        <h1>Your Firework</h1>
+        <p>Create your own Firework.</p>
+    </header>
+    <form>
+        <h2>Choose here</h2>
+        <fieldset>
+            <legend>Name</legend>
+            <input type="text" id="name" name="Rocketname" placeholder="Create here"></br>
+        </fieldset>
+        <fieldset>
+            <legend>Particle Speed</legend>
+            <span>
+            slow
+            <input type="range" name="ExplosionSize" id="explosion" min="1" max="10" step="1" value="1">
+            fast
+        </span>
+        </fieldset>
+        <fieldset>
+            <legend>Lifetime</legend>
+            <span id="lifetime">
+                1 sec
+                <input type="range" name="Lifetime" id="liftetime_f" min="1" max="50" step="1" value="10">
+                50 sec
+            </span>
+        </fieldset>
+        <fieldset id="colorFieldset">
+            <legend>Particle Color</legend>
+            <select id="color" name="Color">
+                <option value="rose">Pink</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="blue">Blue</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Amount of Particle</legend>
+            <span id="slider">
+                10
+                <input type="range" id="amount" name="Amount" value="10" min="10" max="1000" step="1">
+                1000
+            </span>
+        </fieldset>
+        <fieldset>
+            <legend>Type of Particle</legend>
+            <select id="particleType" name="ParticleType">
+                <option value="rectangle">rectangle</option>
+                <option value="dot">dot</option>
+                <option value="line">line</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Size of Particle</legend>
+            <span id="particleSize">
+                10 pixel
+                <input type="range" name="particleSize" id="Size_P" min="10" max="30" step="1" value="10">
+                30 pixel
+            </span>
+        </fieldset>
+        </div>
+    </form>
+
+
+    <div id="canvasdiv">
+        <canvas id="canvas" width=1000 height=500></canvas>
+    </div>
+
+   <button name="Submit_Btn" id="submit"  type="submit">Save your firework.</button>
+   <div></br>
+   <div id="rocketlist">
+   <legend>Your Rockets</legend>
+</div>
+... 
+</div></br>
+</body>
+</html>
+
