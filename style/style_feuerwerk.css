@@ -1,0 +1,44 @@
+body{
+    background-color: rosybrown;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(54, 26, 31);
+}
+
+header{
+    text-align: center;
+    font-size: 1.2em;
+    color:rgb(109, 8, 17);
+}
+
+h2{
+    text-align: center;
+}
+
+
+form{
+   
+    height: max-content;
+    width: 420px;
+    border: solid;
+    margin-left: 20px;
+    background-color: rgb(173, 50, 71);
+    right: 10px;
+        }
+
+button{
+    background-color:thistle;
+    align:center;
+    width: auto;
+    cursor: pinter;
+}
+
+button:hover{
+    opacity: 0.4;
+}
+
+canvas{
+    margin-top: -32em;
+    position:relative;
+    float: right;
+    border:solid;
+}
