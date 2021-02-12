@@ -13,7 +13,7 @@ namespace Feuerwerk{
         public draw (_color:string, _particleRadius: number):void{
             crc2.beginPath();
             crc2.fillStyle = _color;
-            crc2.fillRect(this.position.x, this.position.y, _particleRadius; _particleRadius);
+            crc2.fillRect(this.position.x, this.position.y, _particleRadius, _particleRadius);
             crc2.fill();
         }
     }

@@ -13,9 +13,7 @@ var Feuerwerk;
         draw(_color, _particleRadius) {
             Feuerwerk.crc2.beginPath();
             Feuerwerk.crc2.fillStyle = _color;
-            Feuerwerk.crc2.fillRect(this.position.x, this.position.y, _particleRadius);
-            _particleRadius;
-            ;
+            Feuerwerk.crc2.fillRect(this.position.x, this.position.y, _particleRadius, _particleRadius);
             Feuerwerk.crc2.fill();
         }
     }

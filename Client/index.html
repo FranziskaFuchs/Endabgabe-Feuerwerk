@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,76 +22,95 @@
         <h1>Your Firework</h1>
         <p>Create your own Firework.</p>
     </header>
-    <form>
+    <form method="GET">
         <h2>Choose here</h2>
-        <fieldset>
-            <legend>Name</legend>
-            <input type="text" id="name" name="Rocketname" placeholder="Create here"></br>
-        </fieldset>
-        <fieldset>
-            <legend>Particle Speed</legend>
-            <span>
-            slow
-            <input type="range" name="ExplosionSize" id="explosion" min="1" max="10" step="1" value="1">
-            fast
-        </span>
-        </fieldset>
-        <fieldset>
-            <legend>Lifetime</legend>
-            <span id="lifetime">
-                1 sec
-                <input type="range" name="Lifetime" id="liftetime_f" min="1" max="50" step="1" value="10">
-                50 sec
-            </span>
-        </fieldset>
-        <fieldset id="colorFieldset">
-            <legend>Particle Color</legend>
-            <select id="color" name="Color">
-                <option value="rose">Pink</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="blue">Blue</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <legend>Amount of Particle</legend>
-            <span id="slider">
-                10
-                <input type="range" id="amount" name="Amount" value="10" min="10" max="1000" step="1">
-                1000
-            </span>
-        </fieldset>
-        <fieldset>
-            <legend>Type of Particle</legend>
-            <select id="particleType" name="ParticleType">
-                <option value="rectangle">rectangle</option>
-                <option value="dot">dot</option>
-                <option value="line">line</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <legend>Size of Particle</legend>
-            <span id="particleSize">
-                10 pixel
-                <input type="range" name="particleSize" id="Size_P" min="10" max="30" step="1" value="10">
-                30 pixel
-            </span>
-        </fieldset>
+        <div id="editorContainer">
+
+            <fieldset>
+                <legend>Name</legend>
+                <input type="text" id="name" name="rocketName" placeholder="Create here" required></br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Particle Speed</legend>
+                <span>
+                    slow
+                    <input type="range" name="ExplosionSize" id="explosion" min="1" max="10" step="1" value="1">
+                    fast
+                </span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Lifetime</legend>
+                <span>
+                    1 sec
+                    <input type="range" name="Lifetime" id="liftetime_f" min="1" max="50" step="1" value="10">
+                    50 sec
+                </span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Particle Color</legend>
+                <select id="color" name="Color">
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="blue">Blue</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Amount of Particle</legend>
+                <span>
+                    10
+                    <input type="range" id="amount" name="Amount" value="10" min="10" max="1000" step="1">
+                    1000
+                </span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Type of Particle</legend>
+                <select id="particleType" name="ParticleType">
+                    <option value="rectangle">rectangle</option>
+                    <option value="dot">dot</option>
+                    <option value="line">line</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Size of Particle</legend>
+                <span>
+                    10 pixel
+                    <input type="range" name="particleSize" id="Size_P" min="10" max="30" step="1" value="10">
+                    30 pixel
+                </span>
+            </fieldset>
         </div>
     </form>
 
-
-    <div id="canvasdiv">
-        <canvas id="canvas" width=1000 height=500></canvas>
+    <div id="buttonContainer1">
+        <button id="displayButton">display rocket</button>
+        <button id="updateButton">update rocket</button>
     </div>
 
-   <button name="Submit_Btn" id="submit"  type="submit">Save your firework.</button>
-   <div></br>
-   <div id="rocketlist">
-   <legend>Your Rockets</legend>
-</div>
-... 
-</div></br>
-</body>
-</html>
+    <div id="compilationContainer"></div>
+    <h3>Your Rocketlist</h3>
 
+    <div id="rocketlist"></div>
+
+    <div id="buttonContainer2">
+        <button id="resetButton">reset Formular</button>
+        <button id="saveButton" type="button" form="rocketlistForm">save rocket</button>
+        <button id="deleteButton">delete rocket</button>
+        <div id="dropUp">
+            <button id="dropButton">show rockets</button>
+            <div id="dropupContent"></div>
+        </div>
+    </div>
+ </div>
+
+    <div id="canvasContainer">
+        <canvas id="canvas" width="1000" height="500"></canvas>
+    </div>
+</body>
+
+</html>

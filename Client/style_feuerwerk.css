@@ -10,10 +10,6 @@ header{
     color:rgb(109, 8, 17);
 }
 
-h2{
-    text-align: center;
-}
-
 
 form{
     height: max-content;
@@ -25,8 +21,7 @@ form{
         }
 
 #rocketlist{
-    margin-top: 1em;
-    text-align: center;
+    margin-top: 5em;
     border:solid;
     color: white;
     border-width: thin;
@@ -35,14 +30,11 @@ form{
     background-color: rgb(173, 50, 71) ;
 }
 
-div{
-    width: auto;
-}
 
 button{
     margin-top: 1em;
     background-color:thistle;
-    text-align:center;
+    float: left;
     width: auto;
     cursor: pinter;
 }
@@ -52,7 +44,7 @@ button:hover{
 }
 
 canvas{
-    margin-top: -32em;
+    margin-top: -62em;
     position:relative;
     float: right;
     border:solid;
