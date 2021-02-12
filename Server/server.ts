@@ -3,7 +3,7 @@ import * as Url from "url";
 import * as  Mongo  from "mongodb";
 
 
-export namespace FEUERWERK {
+export namespace Feuerwerk {
     interface Rocket {
         [type: string]: string | string[];
     }
@@ -31,7 +31,7 @@ export namespace FEUERWERK {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        rocket = mongoClient.db("firework").collection("rocketlists");
+        rocket = mongoClient.db("fireworks").collection("rocketlists");
         console.log("Database connected: " + rocket);
     }
 
@@ -81,15 +81,15 @@ export namespace FEUERWERK {
     async function updateRocket(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         let oldName: string | string[] = url.query["rocket"];
-        let rocketName: string | string[] = url.query["name"];
-        let rocketRisks: string | string[] = url.query["Risks"];
-        let rocketSize: string | string[] = url.query["Size"];
+        let rocketName: string | string[] = url.query["rocketName"];
+        let rocketExplosion: string | string[] = url.query["ExplosionSize"];
+        let rocketLifetime: string | string[] = url.query["Lifetime"];
         let rocketColor: string | string[] = url.query["Color"];
-        let rocketDuration: string | string[] = url.query["Duration"];
-        let rocketRadius: string | string[] = url.query["Radius"];
-        let rocketAmount: string | string[] = url.query["Amount"];
+        let rocketParticleAmount: string | string[] = url.query["Amount"];
+        let rocketParticleType: string | string[] = url.query["ParticleType"];
+        let rocketParticleSize: string | string[] = url.query["ParticleSize"];
 
-        rocket.updateOne({ "Name": oldName }, { $set: { "Name": rocketName, "Risks": rocketRisks, "Size": rocketSize, "Color": rocketColor, "Duration": rocketDuration, "Radius": rocketRadius, "Amount": rocketAmount } });
+        rocket.updateOne({ "Name": oldName }, { $set: { "rocketName": rocketName, "ExplosionSize": rocketExplosion, "Lifetime": rocketLifetime, "Color": rocketColor, "Amount": rocketParticleAmount, "ParticleType": rocketParticleType, "ParticleSize": rocketParticleSize } });
         _response.write("rocket updated!");
         _response.end();
     }

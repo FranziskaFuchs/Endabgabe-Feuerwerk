@@ -9,7 +9,18 @@ header{
     font-size: 1.2em;
     color:rgb(109, 8, 17);
 }
+
+h2{
+    text-align: center;
+}
+
+h3{
+    margin-top: 3em;
+    margin-left: 5em;
+
+}
 div#rocketlist{
+    background-color: rgb(173, 50, 71);
     border: solid;
     width: 20em;
     height: 30em;
