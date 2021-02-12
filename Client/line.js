@@ -9,10 +9,10 @@ var Feuerwerk;
             this.position.y = _position.y;
             this.velocity = _velocity;
         }
-        draw(_color, _particleRadius) {
+        draw(_color) {
             Feuerwerk.crc2.beginPath();
             Feuerwerk.crc2.fillStyle = _color;
-            Feuerwerk.crc2.lineTo(this.position.x, this.position.y, _particleRadius, _particleRadius);
+            Feuerwerk.crc2.lineTo(this.position.x, this.position.y);
             Feuerwerk.crc2.fill();
         }
     }

@@ -59,7 +59,6 @@ var Feuerwerk;
         }
         function drawSkyline(_position) {
             //  console.log("Skyline");
-            let x = 0;
             Feuerwerk.crc2.save();
             Feuerwerk.crc2.translate(_position.x, _position.y);
             Feuerwerk.crc2.beginPath();
@@ -106,8 +105,6 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawSkylinetwo(_position) {
-            let x = 0;
-            let y = 300;
             Feuerwerk.crc2.save();
             Feuerwerk.crc2.translate(_position.x, _position.y);
             Feuerwerk.crc2.beginPath();

@@ -9,8 +9,11 @@ header{
     font-size: 1.2em;
     color:rgb(109, 8, 17);
 }
-
-
+div#rocketlist{
+    border: solid;
+    width: 20em;
+    height: 30em;
+}
 form{
     height: max-content;
     width: 420px;
@@ -20,15 +23,6 @@ form{
     right: 10px;
         }
 
-#rocketlist{
-    margin-top: 5em;
-    border:solid;
-    color: white;
-    border-width: thin;
-    width: 20em;
-    height: 25em;
-    background-color: rgb(173, 50, 71) ;
-}
 
 
 button{

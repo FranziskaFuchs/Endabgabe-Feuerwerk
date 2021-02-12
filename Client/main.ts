@@ -23,11 +23,11 @@ namespace Feuerwerk {
 
         (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket);
         (<HTMLInputElement>document.querySelector("#updateButton")).addEventListener("click", updateRocket);
-        (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetOrder);
+        (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetRocketlist);
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
-        (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleAnimate);
+        
 
 
     }
@@ -35,10 +35,11 @@ namespace Feuerwerk {
     //Teil 1: Client Seite
 
     function displayRocket(): void {
-        let formComponents: FormData = new FormData(document.forms[0]);
-        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("explosion") + "<br>" + "Lifetime: " + formComponents.get("lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("color") + "<br>" + "Amount of Particle: " + formComponents.get("amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("particleType") + "<br>" + "Size of Particle: " + formComponents.get("particleSize"); //Schlüssel und Wert jeweils in rocket speichern
+        let formComponents: FormData = new FormData(document.forms[0]);  
+        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "<br>" + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") +"<br>" + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize"); //Schlüssel und Wert jeweils in rocket speichern
 
-        rocket = (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML;
+        
+     (<HTMLDivElement>document.querySelector("div#rocketlist")).innerHTML = rocket;  
     }
 
     async function updateRocket(): Promise<void> {
@@ -48,7 +49,7 @@ namespace Feuerwerk {
         let responseText: string = await response.text();
         alert(responseText);
     }
-    function resetOrder(): void {
+    function resetRocketlist(): void {
         document.forms[0].reset();                                                              //Formular Daten zurücksetzen
         (<HTMLInputElement>document.getElementById("rocketlist")).innerHTML = "";                                    //Inhalt im div leeren
     }
@@ -87,7 +88,7 @@ namespace Feuerwerk {
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             if (rocket["rocketName"] == currentRocket) {
                 //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
-                (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML = "Name: " + rocket["rocketname"] + "<br>" + "Explosion:  " + rocket["explosion"] + "<br>" + "Lifetime: " + rocket["lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["color"] + "<br>" + "Amount of Particles: " + rocket["amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["particleType"] + "<br>" + "Size of Particle: " + rocket["particleSize"];    //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
+                (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML = "Name: " + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"];    //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
                 fillInputFields(rocket);
             }
         }
@@ -96,24 +97,13 @@ namespace Feuerwerk {
     }
 
     function fillInputFields(rocket: any): void {
-        (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["Name"];
-        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["Explosion"];
-        (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["Lifetime"];
-        (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
-        (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["ParticleAmount"];
-        (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["ParticleType"];
-        (<HTMLInputElement>document.querySelector("input#particleSize")).value = rocket["ParticleSize"];
-        switch (rocket["color"]) {
-            case "red":
-                (<HTMLSelectElement>document.querySelector("select#red")).selectedOptions;
-                break;
-            case "orange":
-                (<HTMLSelectElement>document.querySelector("select#orange")).selectedOptions;
-                break;
-            case "blue":
-                (<HTMLSelectElement>document.querySelector("select#blue")).selectedOptions;
-                break;
-        }
+        (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
+        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["explosion"];
+        (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["lifetime"];
+        (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["color"];
+        (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["amount"];
+        (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["particleType"];
+        (<HTMLInputElement>document.querySelector("input#ParticleSize")).value = rocket["ParticleSize"];
 
     }
 
@@ -141,55 +131,5 @@ namespace Feuerwerk {
         }
 
         buttonClicked++;
-    }
-
-
-    // TEIL 2: CANVAS
-
-    function drawLightRays(x: number, y: number, color: string, radius: number, radiusEnde: number) {
-
-        for (let grade: number = -1; grade <= 1; grade = grade + 0.2) {
-
-            let jump: number = grade * Math.PI;
-            crc2.moveTo(x, y);
-            crc2.lineTo(x + radius * Math.cos(jump), y + radius * Math.sin(jump));
-
-            crc2.strokeStyle = color;
-            crc2.stroke();
-
-            if (radius >= radiusEnde) {
-                crc2.clearRect(0, 0, 421, 503);                                                 //Nach der letzten Schleife Leinwand leeren
-            }
-
-            crc2.beginPath();
-        }
-    }
-
-    function handleAnimate(_event: MouseEvent): void {
-        let cursorX: number = _event.pageX - (<HTMLCanvasElement>document.querySelector("canvas")).offsetLeft;        //Position Maus X-Achse
-        let cursorY: number = _event.pageY - (<HTMLCanvasElement>document.querySelector("canvas")).offsetTop;         //Position Maus Y-Achse
-
-        let form: FormData = new FormData(document.forms[0]);                                    //Daten aus Form holen
-        let color: string = <string>form.get("Color");
-        let duration: number = Number(form.get("Duration")) * 1000;                                //1 Mili sec. * 1000 = 1 sec
-        let radiusEnde: number = Number(form.get("Radius")) * 10;                                  //1mm * 10 = 1cm
-
-        animateLightRays(cursorX, cursorY, color, duration, 0, radiusEnde);
-    }
-
-    function animateLightRays(x: number, y: number, color: string, duration: number, radius: number, radiusEnde: number): void {
-        function oneLoop() {
-            setTimeout(function () {
-
-                drawLightRays(x, y, color, radius, radiusEnde);
-                radius++;
-                if (radius <= radiusEnde) {
-                    oneLoop();
-                }
-
-            }, duration / radiusEnde)
-        }
-
-        oneLoop();
     }
 }

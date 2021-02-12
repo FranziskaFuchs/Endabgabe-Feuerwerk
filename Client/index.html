@@ -13,7 +13,6 @@
     <script src="rectangle.js"></script>
     <script src="dot.js"></script>
     <script src="line.js"></script>
-    <sript src="Server/server.js"></sript>
     <title>Your Firework></title>
 </head>
 
@@ -22,9 +21,10 @@
         <h1>Your Firework</h1>
         <p>Create your own Firework.</p>
     </header>
+    <div id="editorContainer">
     <form method="GET">
         <h2>Choose here</h2>
-        <div id="editorContainer">
+        <div id="rocketComponents">
 
             <fieldset>
                 <legend>Name</legend>
@@ -80,7 +80,7 @@
                 <legend>Size of Particle</legend>
                 <span>
                     10 pixel
-                    <input type="range" name="particleSize" id="Size_P" min="10" max="30" step="1" value="10">
+                    <input type="range" name="ParticleSize" id="Size_P" min="10" max="30" step="1" value="10">
                     30 pixel
                 </span>
             </fieldset>

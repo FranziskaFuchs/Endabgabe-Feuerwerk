@@ -1,9 +1,10 @@
 import * as Http from "http";
 import * as Url from "url";
-import * as Mongo from "mongodb";
+import * as  Mongo  from "mongodb";
 
-export namespace Feuerwerk {
-    interface Rocketlist {
+
+export namespace FEUERWERK {
+    interface Rocket {
         [type: string]: string | string[];
     }
 
@@ -80,7 +81,7 @@ export namespace Feuerwerk {
     async function updateRocket(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         let oldName: string | string[] = url.query["rocket"];
-        let rocketName: string | string[] = url.query["Name"];
+        let rocketName: string | string[] = url.query["name"];
         let rocketRisks: string | string[] = url.query["Risks"];
         let rocketSize: string | string[] = url.query["Size"];
         let rocketColor: string | string[] = url.query["Color"];
@@ -93,7 +94,7 @@ export namespace Feuerwerk {
         _response.end();
     }
 
-    function storeRocket(data: Rocketlist): void {
+    function storeRocket(data: Rocket): void {
         rocket.insertOne(data);                                                                //Speichern der Daten in rocket (mongo client)
     }
 
