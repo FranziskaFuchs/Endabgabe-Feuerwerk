@@ -1,19 +1,19 @@
-namespace Feuerwerk{
+namespace Feuerwerk {
     console.log("Particle");
 
-    export class Particle{
+    export class Particle {
         protected position: Vector;
         protected velocity: Vector;
 
-        constructor(){
+        constructor() {
 
         }
 
-        public draw (_color: string, _particleRadius: number){
+        public draw(_color: string, _particleRadius: number) {
             console.log("draw Particle");
         }
 
-        public move(): void{
+        public move(): void {
             this.velocity = Vector.getSum(this.velocity, new Vector(0, 0.01)) //Gravitaion
             this.position = Vector.getSum(this.position, this.velocity);
         }

@@ -44,6 +44,7 @@ namespace Feuerwerk {
         public draw(): void {
             for (let i: number = 0; i < this.particleArray.length; i++) {
                 this.particleArray[i].draw(this.color, this.particleRadius);
+
             }
 
         }

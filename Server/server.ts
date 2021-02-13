@@ -3,18 +3,21 @@ import * as Url from "url";
 import * as  Mongo  from "mongodb";
 
 
+
 export namespace Feuerwerk {
     interface Rocket {
         [type: string]: string | string[];
     }
 
     let rocket: Mongo.Collection;
-    let databaseUrl: string = "mongodb://mongodb+srv://franziska_fuchs:<password>@eia2.482ba.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    let databaseUrl: string = "mongodb://mongodb+srv://franziska_fuchs:Mondsilbertraum1!@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority"
+    
     startServer();
     connectToDatabase(databaseUrl);
 
     function startServer(): void {
         console.log("start_server");
+
         let server: Http.Server = Http.createServer();
 
         let port: number | string | undefined = process.env.PORT;
@@ -85,11 +88,11 @@ export namespace Feuerwerk {
         let rocketExplosion: string | string[] = url.query["ExplosionSize"];
         let rocketLifetime: string | string[] = url.query["Lifetime"];
         let rocketColor: string | string[] = url.query["Color"];
-        let rocketParticleAmount: string | string[] = url.query["Amount"];
+        let rocketAmount: string | string[] = url.query["Amount"];
         let rocketParticleType: string | string[] = url.query["ParticleType"];
         let rocketParticleSize: string | string[] = url.query["ParticleSize"];
 
-        rocket.updateOne({ "Name": oldName }, { $set: { "rocketName": rocketName, "ExplosionSize": rocketExplosion, "Lifetime": rocketLifetime, "Color": rocketColor, "Amount": rocketParticleAmount, "ParticleType": rocketParticleType, "ParticleSize": rocketParticleSize } });
+        rocket.updateOne({ "Name": oldName }, { $set: { "rocketName": rocketName, "ExplosionSize": rocketExplosion, "Lifetime": rocketLifetime, "Color": rocketColor, "Amount": rocketAmount, "ParticleType": rocketParticleType, "ParticleSize": rocketParticleSize } });
         _response.write("rocket updated!");
         _response.end();
     }

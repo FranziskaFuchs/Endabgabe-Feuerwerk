@@ -7,16 +7,19 @@ namespace Feuerwerk {
     export let rockets: any;
     export let currentRocket: string;
     export let crc2: CanvasRenderingContext2D;
+    export let fireworks: Firework[] = [];
+    let fps: number = 100;
 
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null;
+        let imgData: ImageData;
 
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
             return;
+
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-        let imgData: ImageData;
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
 
         drawCanvas();
@@ -27,19 +30,18 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
-        
 
-
+        canvas.addEventListener("click", handleClick);
     }
 
-    //Teil 1: Client Seite
+    //Teil 1: Client 
 
     function displayRocket(): void {
-        let formComponents: FormData = new FormData(document.forms[0]);  
-        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "<br>" + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") +"<br>" + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize"); //Schlüssel und Wert jeweils in rocket speichern
+        let formComponents: FormData = new FormData(document.forms[0]);
+        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel und Wert jeweils in rocket speichern
 
-        
-     (<HTMLDivElement>document.querySelector("div#rocketlist")).innerHTML = rocket;  
+
+        (<HTMLDivElement>document.querySelector("div#rocketlist")).innerHTML = rocket;
     }
 
     async function updateRocket(): Promise<void> {
@@ -132,4 +134,39 @@ namespace Feuerwerk {
 
         buttonClicked++;
     }
+
+    //Teil 2: Canvas
+
+    function handleClick(_event: MouseEvent): void {
+
+        let Position: Vector = new Vector(_event.offsetX, _event.offsetY);
+        createFirework(Position);
+
+    }
+
+    function createFirework(Position: Vector) {
+        console.log("createFirework");
+
+        let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
+        let ExplosionValue: any = ExplosionTarget.value;
+
+        let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
+        let LifetimeValue: any = LifetimeTarget.value;
+
+        let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
+        let ColorValue: any = ColorTarget.value;
+
+        let AmountTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("amount");
+        let AmountValue: any = AmountTarget.value;
+
+        let TypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
+        let TypeValue: any = TypeTarget.value;
+
+        let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("particleSize");
+        let particleSizeValue: any = particleSizeTarget.value;
+
+        let firework: Firework = new Firework(Position, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
+        fireworks.push(firework);
+    }
+
 }
