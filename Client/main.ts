@@ -173,7 +173,7 @@ namespace Feuerwerk {
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeValue: any = particleSizeTarget.value;
 
-        let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
+        let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
         fireworks.push(firework);
     }
 

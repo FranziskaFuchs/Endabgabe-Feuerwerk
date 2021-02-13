@@ -144,7 +144,7 @@ var Feuerwerk;
         let TypeValue = TypeTarget.value;
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = particleSizeTarget.value;
-        let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
+        let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
         Feuerwerk.fireworks.push(firework);
     }
     function update() {
