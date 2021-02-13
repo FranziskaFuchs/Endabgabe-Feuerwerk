@@ -31,7 +31,7 @@ var Feuerwerk;
             document.querySelector("#saveButton").addEventListener("click", saveRocket);
             document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
             document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
-            document.querySelector("canvas").addEventListener("click", handleAnimate);
+            document.querySelector("canvas").addEventListener("click", handleClick);
             canvas.addEventListener("click", handleClick);
             window.setInterval(update, 100 / fps);
         });
@@ -126,8 +126,8 @@ var Feuerwerk;
         Feuerwerk.buttonClicked++;
     }
     //Teil 2: Canvas
-    function handleAnimate(_event) {
-        let Position = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
+    function handleClick(_event) {
+        let tempPosition = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
         createFirework(tempPosition);
     }
     function createFirework(tempPosition) {

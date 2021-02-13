@@ -32,7 +32,7 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
-        (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleAnimate);
+        (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
 
 
         canvas.addEventListener("click", handleClick);
@@ -144,9 +144,9 @@ namespace Feuerwerk {
 
     //Teil 2: Canvas
 
-    function handleAnimate(_event: MouseEvent): void {
+    function handleClick(_event: MouseEvent): void {
 
-        let Position: Vector = new Vector(_event.offsetX, _event.offsetY);
+        let tempPosition: Vector = new Vector(_event.offsetX, _event.offsetY);
         createFirework(tempPosition);
 
     }
