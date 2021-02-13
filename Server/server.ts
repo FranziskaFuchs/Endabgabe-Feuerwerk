@@ -33,9 +33,15 @@ export namespace Feuerwerk {
     async function connectToDatabase(_url: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-        await mongoClient.connect();
-        rocket = mongoClient.db("fireworks").collection("rocketlists");
+        
+        mongoClient.connect(err =>{
+            rocket = mongoClient.db("fireworks").collection("rocketlists");
         console.log("Database connected: " + rocket);
+        });
+
+
+
+        
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
