@@ -10,11 +10,12 @@ namespace Feuerwerk {
     export let crc2: CanvasRenderingContext2D;
     export let fireworks: Firework[] = [];
     let fps: number = 100;
-    let form: HTMLFormElement;
+    
 
 
     async function handleLoad(_event: Event): Promise<void> {
         let canvas: HTMLCanvasElement | null;
+        let form: HTMLFormElement;
 
         form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
@@ -32,7 +33,7 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
-        (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
+     //   (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
 
 
         canvas.addEventListener("click", handleClick);

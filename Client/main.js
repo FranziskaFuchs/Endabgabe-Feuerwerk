@@ -14,10 +14,10 @@ var Feuerwerk;
     Feuerwerk.buttonClicked = 0;
     Feuerwerk.fireworks = [];
     let fps = 100;
-    let form;
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
             let canvas;
+            let form;
             form = document.querySelector("form");
             canvas = document.querySelector("canvas");
             if (!canvas)
@@ -31,7 +31,7 @@ var Feuerwerk;
             document.querySelector("#saveButton").addEventListener("click", saveRocket);
             document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
             document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
-            document.querySelector("canvas").addEventListener("click", handleClick);
+            //   (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
             canvas.addEventListener("click", handleClick);
             window.setInterval(update, 100 / fps);
         });
