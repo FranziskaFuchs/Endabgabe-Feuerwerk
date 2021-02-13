@@ -14,10 +14,10 @@ var Feuerwerk;
     Feuerwerk.buttonClicked = 0;
     Feuerwerk.fireworks = [];
     let fps = 10;
+    let form;
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
             let canvas;
-            let form;
             form = document.querySelector("form");
             canvas = document.querySelector("canvas");
             if (!canvas)
@@ -28,7 +28,7 @@ var Feuerwerk;
             document.querySelector("#displayButton").addEventListener("click", displayRocket);
             document.querySelector("#updateButton").addEventListener("click", updateRocket);
             document.querySelector("#resetButton").addEventListener("click", resetRocketlist);
-            document.querySelector("#saveButton").addEventListener("click", saveRocket);
+            document.querySelector("btnSubmit").addEventListener("click", sendFireWork);
             document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
             document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
             //   (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
@@ -164,5 +164,16 @@ var Feuerwerk;
             }
         }
     }
+    function sendFireWork(_event) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("submit fire work");
+            let formData = new FormData(form);
+            let query = new URLSearchParams(formData);
+            let response = yield fetch(Feuerwerk.url + "?" + query.toString());
+            let responseText = yield response.text();
+            alert(responseText);
+        });
+    }
+    Feuerwerk.sendFireWork = sendFireWork;
 })(Feuerwerk || (Feuerwerk = {}));
 //# sourceMappingURL=main.js.map

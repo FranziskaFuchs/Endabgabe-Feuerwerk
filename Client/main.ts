@@ -10,12 +10,12 @@ namespace Feuerwerk {
     export let crc2: CanvasRenderingContext2D;
     export let fireworks: Firework[] = [];
     let fps: number = 10;
-    
+    let form: HTMLFormElement;
 
 
     async function handleLoad(_event: Event): Promise<void> {
         let canvas: HTMLCanvasElement | null;
-        let form: HTMLFormElement;
+        
 
         form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
@@ -30,7 +30,7 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket);
         (<HTMLInputElement>document.querySelector("#updateButton")).addEventListener("click", updateRocket);
         (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetRocketlist);
-        (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
+        (<HTMLInputElement>document.querySelector("btnSubmit")).addEventListener("click", sendFireWork);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
      //   (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleClick);
@@ -38,6 +38,7 @@ namespace Feuerwerk {
 
         canvas.addEventListener("click", handleClick);
         window.setInterval(update, 100 / fps);
+       
     }
 
     //Teil 1: Client 
@@ -200,5 +201,18 @@ namespace Feuerwerk {
 
             }
         }
+
+       
     }
-}
+ export async function sendFireWork(_event: MouseEvent):Promise<void> {
+            console.log("submit fire work");
+            let formData: FormData = new FormData(form);
+            let query: URLSearchParams = new URLSearchParams(<any>formData);
+            let response: Response = await fetch(url + "?" + query.toString());
+            let responseText: string = await response.text();
+            alert(responseText);
+
+             }
+
+                
+            }
