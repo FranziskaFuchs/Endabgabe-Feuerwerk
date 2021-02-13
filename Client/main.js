@@ -30,6 +30,7 @@ var Feuerwerk;
         document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
         document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
         canvas.addEventListener("click", handleClick);
+        window.setInterval(update, 100 / fps);
     }
     //Teil 1: Client 
     function displayRocket() {
@@ -137,10 +138,27 @@ var Feuerwerk;
         let AmountValue = AmountTarget.value;
         let TypeTarget = document.getElementById("particleType");
         let TypeValue = TypeTarget.value;
-        let particleSizeTarget = document.getElementById("particleSize");
+        let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = particleSizeTarget.value;
         let firework = new Feuerwerk.Firework(Position, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
         Feuerwerk.fireworks.push(firework);
+    }
+    function update() {
+        let canvas;
+        let imgData;
+        canvas = document.querySelector("canvas");
+        if (!canvas)
+            return;
+        Feuerwerk.crc2 = canvas.getContext("2d");
+        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
+        Feuerwerk.drawCanvas();
+        for (let i = Feuerwerk.fireworks.length - 1; i >= 0; i--) {
+            Feuerwerk.fireworks[i].draw();
+            Feuerwerk.fireworks[i].update();
+            if (!Feuerwerk.fireworks[i].isAlive()) {
+                Feuerwerk.fireworks.splice(i, 1);
+            }
+        }
     }
 })(Feuerwerk || (Feuerwerk = {}));
 //# sourceMappingURL=main.js.map

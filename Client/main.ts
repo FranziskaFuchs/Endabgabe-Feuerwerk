@@ -32,6 +32,7 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
 
         canvas.addEventListener("click", handleClick);
+        window.setInterval(update,100/fps);
     }
 
     //Teil 1: Client 
@@ -162,11 +163,35 @@ namespace Feuerwerk {
         let TypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
         let TypeValue: any = TypeTarget.value;
 
-        let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("particleSize");
+        let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeValue: any = particleSizeTarget.value;
 
         let firework: Firework = new Firework(Position, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
         fireworks.push(firework);
     }
 
+    function update() {
+
+        let canvas: HTMLCanvasElement | null;
+        let imgData: ImageData;
+
+        canvas = <HTMLCanvasElement>document.querySelector("canvas");
+        if (!canvas)
+            return;
+
+        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
+
+        drawCanvas();
+
+
+        for (let i: number = fireworks.length - 1; i >= 0; i--) {
+            fireworks[i].draw();
+            fireworks[i].update();
+            if (!fireworks[i].isAlive()) {
+                fireworks.splice(i, 1);
+
+            }
+        }
+    }
 }

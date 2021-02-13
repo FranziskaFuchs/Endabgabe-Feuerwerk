@@ -5,23 +5,24 @@ var Feuerwerk;
     class Firework {
         constructor(_position, _type, _color, _speed, _amount, _particleRadius, _lifetime) {
             this.particleArray = [];
+            console.log(_lifetime);
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
             switch (_type) {
-                case "rectangle":
+                case "Rectangle":
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
                     break;
-                case "dot":
+                case "Dot":
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Dot(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
                     break;
-                case "line":
+                case "Line":
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }

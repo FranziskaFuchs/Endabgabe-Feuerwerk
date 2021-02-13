@@ -13,6 +13,7 @@ namespace Feuerwerk {
         protected particleArray: Particle[] = [];
 
         constructor(_position: Vector, _type: string, _color: string, _speed: number, _amount: number, _particleRadius: number, _lifetime: number) {
+            console.log(_lifetime);
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
@@ -20,19 +21,19 @@ namespace Feuerwerk {
             this.lifeTime = _lifetime;
 
             switch (_type) {
-                case "rectangle":
+                case "Rectangle":
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                     }
                     break;
 
-                case "dot":
+                case "Dot":
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Dot(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                     }
                     break;
 
-                case "line":
+                case "Line":
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Line(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                     }
