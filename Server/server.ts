@@ -38,6 +38,7 @@ export namespace Feuerwerk {
             rocket = mongoClient.db("fireworks").collection("rocketlists");
         console.log("Database connected: " + rocket);
         });
+
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {

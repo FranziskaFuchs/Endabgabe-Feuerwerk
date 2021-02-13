@@ -37,6 +37,7 @@ namespace Feuerwerk {
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Line(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                     }
+
                 default: console.log("wrong type");
                     return;
             }

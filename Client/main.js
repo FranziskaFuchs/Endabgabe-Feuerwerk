@@ -14,23 +14,27 @@ var Feuerwerk;
     Feuerwerk.buttonClicked = 0;
     Feuerwerk.fireworks = [];
     let fps = 100;
+    let form;
     function handleLoad(_event) {
-        let canvas;
-        let imgData;
-        canvas = document.querySelector("canvas");
-        if (!canvas)
-            return;
-        Feuerwerk.crc2 = canvas.getContext("2d");
-        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
-        Feuerwerk.drawCanvas();
-        document.querySelector("#displayButton").addEventListener("click", displayRocket);
-        document.querySelector("#updateButton").addEventListener("click", updateRocket);
-        document.querySelector("#resetButton").addEventListener("click", resetRocketlist);
-        document.querySelector("#saveButton").addEventListener("click", saveRocket);
-        document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
-        document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
-        canvas.addEventListener("click", handleClick);
-        window.setInterval(update, 100 / fps);
+        return __awaiter(this, void 0, void 0, function* () {
+            let canvas;
+            form = document.querySelector("form");
+            canvas = document.querySelector("canvas");
+            if (!canvas)
+                return;
+            Feuerwerk.crc2 = canvas.getContext("2d");
+            Feuerwerk.imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
+            Feuerwerk.drawCanvas();
+            document.querySelector("#displayButton").addEventListener("click", displayRocket);
+            document.querySelector("#updateButton").addEventListener("click", updateRocket);
+            document.querySelector("#resetButton").addEventListener("click", resetRocketlist);
+            document.querySelector("#saveButton").addEventListener("click", saveRocket);
+            document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
+            document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
+            document.querySelector("canvas").addEventListener("click", handleAnimate);
+            canvas.addEventListener("click", handleClick);
+            window.setInterval(update, 100 / fps);
+        });
     }
     //Teil 1: Client 
     function displayRocket() {
@@ -122,11 +126,11 @@ var Feuerwerk;
         Feuerwerk.buttonClicked++;
     }
     //Teil 2: Canvas
-    function handleClick(_event) {
+    function handleAnimate(_event) {
         let Position = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
-        createFirework(Position);
+        createFirework(tempPosition);
     }
-    function createFirework(Position) {
+    function createFirework(tempPosition) {
         console.log("createFirework");
         let ExplosionTarget = document.getElementById("explosion");
         let ExplosionValue = ExplosionTarget.value;
@@ -140,7 +144,7 @@ var Feuerwerk;
         let TypeValue = TypeTarget.value;
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = particleSizeTarget.value;
-        let firework = new Feuerwerk.Firework(Position, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
+        let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
         Feuerwerk.fireworks.push(firework);
     }
     function update() {

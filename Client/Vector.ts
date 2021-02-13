@@ -1,23 +1,23 @@
-namespace Feuerwerk{
+namespace Feuerwerk {
     export class Vector {
         public x: number;
         public y: number;
         public length: number;
 
-        constructor(_x:number,_y: number){
+        constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
             this.calcLength();
         }
 
-        public static getRandom(_min: number, _max: number):Vector{
-            let tempVector: Vector = new Vector(0,0);
+        public static getRandom(_min: number, _max: number): Vector {
+            let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_min + Math.random() * (_max - _min), _min + Math.random() * (_max - _min));
             return tempVector;
         }
 
-        public static getDifference(_v0: Vector, _v1:Vector): Vector{
-            let tempVector: Vector = new Vector(0,0);
+        public static getDifference(_v0: Vector, _v1: Vector): Vector {
+            let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_v0.x - _v1.x, _v0.y - _v1.y);
             return tempVector;
         }

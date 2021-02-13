@@ -6,15 +6,17 @@ namespace Feuerwerk {
     export let buttonClicked: number = 0;
     export let rockets: any;
     export let currentRocket: string;
+    export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
     export let fireworks: Firework[] = [];
     let fps: number = 100;
+    let form: HTMLFormElement;
 
 
-    function handleLoad(_event: Event): void {
+    async function handleLoad(_event: Event): Promise<void> {
         let canvas: HTMLCanvasElement | null;
-        let imgData: ImageData;
 
+        form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
             return;
@@ -30,9 +32,11 @@ namespace Feuerwerk {
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket);
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);
+        (<HTMLCanvasElement>document.querySelector("canvas")).addEventListener("click", handleAnimate);
+
 
         canvas.addEventListener("click", handleClick);
-        window.setInterval(update,100/fps);
+        window.setInterval(update, 100 / fps);
     }
 
     //Teil 1: Client 
@@ -108,6 +112,7 @@ namespace Feuerwerk {
         (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["particleType"];
         (<HTMLInputElement>document.querySelector("input#ParticleSize")).value = rocket["ParticleSize"];
 
+
     }
 
     async function deleteRocket(): Promise<void> {
@@ -136,16 +141,17 @@ namespace Feuerwerk {
         buttonClicked++;
     }
 
+
     //Teil 2: Canvas
 
-    function handleClick(_event: MouseEvent): void {
+    function handleAnimate(_event: MouseEvent): void {
 
         let Position: Vector = new Vector(_event.offsetX, _event.offsetY);
-        createFirework(Position);
+        createFirework(tempPosition);
 
     }
 
-    function createFirework(Position: Vector) {
+    function createFirework(tempPosition: Vector) {
         console.log("createFirework");
 
         let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
@@ -153,7 +159,6 @@ namespace Feuerwerk {
 
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
         let LifetimeValue: any = LifetimeTarget.value;
-
         let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
         let ColorValue: any = ColorTarget.value;
 
@@ -166,7 +171,7 @@ namespace Feuerwerk {
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeValue: any = particleSizeTarget.value;
 
-        let firework: Firework = new Firework(Position, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
+        let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps);
         fireworks.push(firework);
     }
 
