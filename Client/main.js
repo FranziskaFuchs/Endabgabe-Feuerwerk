@@ -13,7 +13,7 @@ var Feuerwerk;
     Feuerwerk.url = "https://fireworkendabgabe.herokuapp.com";
     Feuerwerk.buttonClicked = 0;
     Feuerwerk.fireworks = [];
-    let fps = 100;
+    let fps = 10;
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
             let canvas;

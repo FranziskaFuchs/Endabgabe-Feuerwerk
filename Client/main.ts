@@ -9,7 +9,7 @@ namespace Feuerwerk {
     export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
     export let fireworks: Firework[] = [];
-    let fps: number = 100;
+    let fps: number = 10;
     
 
 
@@ -160,6 +160,7 @@ namespace Feuerwerk {
 
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
         let LifetimeValue: any = LifetimeTarget.value;
+
         let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
         let ColorValue: any = ColorTarget.value;
 
