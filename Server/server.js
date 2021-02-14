@@ -14,7 +14,7 @@ const Mongo = require("mongodb");
 var Feuerwerk;
 (function (Feuerwerk) {
     let rocket;
-    let databaseUrl = "mongodb+srv://franziska_fuchs:Mondsilbertraum1!@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://user1:Mondsilbertraum1@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority";
     startServer();
     connectToDatabase(databaseUrl);
     function startServer() {
