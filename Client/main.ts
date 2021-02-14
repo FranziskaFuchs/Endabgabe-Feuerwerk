@@ -2,8 +2,8 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     window.addEventListener("load", handleLoad);   // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
 
-  let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
-//   let url: string = "http://localhost:5002"; 
+    let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
+    //   let url: string = "http://localhost:5002"; 
     let buttonClicked: number = 0;
     let rockets: any;
     let currentRocket: string;
@@ -16,7 +16,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     let canvas: HTMLCanvasElement | null;              // fps= frames per second
 
 
-    async function handleLoad(_event: Event): Promise<void> { 
+    async function handleLoad(_event: Event): Promise<void> {
         console.log("load");                           //die async Funktion läuft außerhalb des Kontrolflusses & gibt impliziertes Promise Objekt zurüc
 
         form = <HTMLFormElement>document.querySelector("form");
