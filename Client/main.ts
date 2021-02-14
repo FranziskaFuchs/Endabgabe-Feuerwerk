@@ -2,7 +2,9 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     window.addEventListener("load", handleLoad);   // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
 
-    let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
+   
+   let url: string = "https://kolkrabbi.heroku.com/hooks/github"
+  //  let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
     //   let url: string = "http://localhost:5002"; 
     let buttonClicked: number = 0;
     let rockets: any;
