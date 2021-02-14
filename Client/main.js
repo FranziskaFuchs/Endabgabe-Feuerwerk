@@ -67,7 +67,7 @@ var Feuerwerk;
     }
     function getSavedRocketsFromDb() {
         return __awaiter(this, void 0, void 0, function* () {
-            let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: holen über command "retrieve"(Befehl abrufen)
+            let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
@@ -79,14 +79,13 @@ var Feuerwerk;
     }
     function chooseRocket(_event) {
         currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
-        let parent = document.querySelector("div#dropupContent"); //Wenn die Rakete ausgewählt wurde, soll Dropup Feld wieder herunterfahren
-        parent.style.display = "none";
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
+        //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        //Wenn die Rakete ausgewählt wurde, soll Dropup Feld wieder herunterfahren
+        //   parent.style.display = "none";
+        //   while (parent.firstChild) {
+        //      parent.removeChild(parent.firstChild);
+        //  }
         for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
-            if (rocket["rocketName"] == currentRocket) {
-                //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
+            if (rocket["rocketName"] == currentRocket) { //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
                 document.querySelector("div#rocketlist").innerHTML = "Name: " + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"]; //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
                 fillInputFields(rocket);
             }
