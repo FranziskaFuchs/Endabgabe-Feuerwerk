@@ -34,10 +34,7 @@ export namespace Feuerwerk {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         
-        mongoClient.c
-
-
-
+       await mongoClient.connect();
         rocket = mongoClient.db("fireworks").collection("rocketlists");
         console.log("Database connected: " + rocket);
     }

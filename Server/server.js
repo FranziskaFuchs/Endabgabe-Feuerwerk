@@ -31,7 +31,7 @@ var Feuerwerk;
         return __awaiter(this, void 0, void 0, function* () {
             let options = { useNewUrlParser: true, useUnifiedTopology: true };
             let mongoClient = new Mongo.MongoClient(_url, options);
-            mongoClient.c;
+            yield mongoClient.connect();
             rocket = mongoClient.db("fireworks").collection("rocketlists");
             console.log("Database connected: " + rocket);
         });

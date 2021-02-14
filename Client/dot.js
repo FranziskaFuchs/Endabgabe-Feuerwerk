@@ -1,4 +1,3 @@
-"use strict";
 var Feuerwerk;
 (function (Feuerwerk) {
     console.log("dot");
