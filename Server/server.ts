@@ -10,7 +10,7 @@ export namespace Feuerwerk {
     }
 
     let rocket: Mongo.Collection;
-    let databaseUrl: string = "mongodb://mongodb+srv://franziska_fuchs:Mondsilbertraum1!@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority"
+    let databaseUrl: string = "mongodb+srv://franziska_fuchs:Mondsilbertraum1!@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority"
     
     startServer();
     connectToDatabase(databaseUrl);
