@@ -135,6 +135,7 @@ var Feuerwerk;
         console.log("createFirework"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
         let ExplosionTarget = document.getElementById("explosion");
         let ExplosionValue = ExplosionTarget.value;
+        console.log(ExplosionValue);
         let LifetimeTarget = document.getElementById("lifetime_f");
         let LifetimeValue = LifetimeTarget.value;
         let ColorTarget = document.getElementById("color");

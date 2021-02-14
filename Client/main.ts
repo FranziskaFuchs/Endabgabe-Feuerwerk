@@ -154,7 +154,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
         let ExplosionValue: any = ExplosionTarget.value;
-
+        console.log(ExplosionValue);
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
         let LifetimeValue: any = LifetimeTarget.value;
 
@@ -169,7 +169,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeValue: any = particleSizeTarget.value;
-
+        
         let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
         fireworks.push(firework);
     }
