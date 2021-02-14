@@ -4,8 +4,8 @@ var Feuerwerk;
     console.log("firework");
     class Firework {
         constructor(_position, _type, _color, _speed, _amount, _particleRadius, _lifetime) {
-            this.particleArray = [];
-            console.log(_lifetime);
+            this.particleArray = []; //im Particle Array, werden die gewählten Partikel gelistet
+            console.log(_lifetime); //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
@@ -26,9 +26,7 @@ var Feuerwerk;
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
-                default:
-                    console.log("wrong type");
-                    return;
+                default: console.log("wrong type"); // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
             }
         }
         draw() {

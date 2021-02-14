@@ -48,8 +48,8 @@ button:hover{
     opacity: 0.4;
 }
 
-canvas{
-    margin-top: -62em;
+#canvasContainer{
+    margin-top: -69em;
     position:relative;
     float: right;
     border:solid;

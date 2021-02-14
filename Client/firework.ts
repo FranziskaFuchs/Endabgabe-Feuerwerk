@@ -1,7 +1,7 @@
 namespace Feuerwerk {
     console.log("firework");
 
-    export class Firework {
+    export class Firework {             //Klasse Feuerwerk, baut aus den eingegebenen Nutzerdaten eine Rakete
 
         public position: Vector;
         public color: string;
@@ -10,17 +10,17 @@ namespace Feuerwerk {
         public particleRadius: number;
         private lifeTime: number;
 
-        protected particleArray: Particle[] = [];
+        protected particleArray: Particle[] = [];       //im Particle Array, werden die gewählten Partikel gelistet
 
         constructor(_position: Vector, _type: string, _color: string, _speed: number, _amount: number, _particleRadius: number, _lifetime: number) {
-            console.log(_lifetime);
+            console.log(_lifetime);  //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
 
-            switch (_type) {
+            switch (_type) {                  
                 case "Rectangle":
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
@@ -38,8 +38,7 @@ namespace Feuerwerk {
                         this.particleArray.push(new Line(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                     }
 
-                default: console.log("wrong type");
-                    return;
+                default: console.log("wrong type");             // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
             }
         }
 

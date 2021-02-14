@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var Feuerwerk;
 (function (Feuerwerk) {
-    window.addEventListener("load", handleLoad);
-    let url = "https://fireworkendabgabe.herokuapp.com";
+    window.addEventListener("load", handleLoad); // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
+    let url = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
     let buttonClicked = 0;
     let rockets;
     let currentRocket;
     let fireworks = [];
-    let fps = 10;
+    let fps = 10; // fps= frames per second
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
             let canvas;
@@ -25,27 +25,27 @@ var Feuerwerk;
             if (!canvas)
                 return;
             Feuerwerk.crc2 = canvas.getContext("2d");
-            Feuerwerk.imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
-            Feuerwerk.drawCanvas();
+            Feuerwerk.imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
+            Feuerwerk.drawCanvas(); //implementierung meines Hintergrunds
             document.querySelector("#displayButton").addEventListener("click", displayRocket);
             document.querySelector("#updateButton").addEventListener("click", updateRocket);
             document.querySelector("#resetButton").addEventListener("click", resetRocketlist);
             document.querySelector("#saveButton").addEventListener("click", saveRocket);
             document.querySelector("#deleteButton").addEventListener("click", deleteRocket);
-            document.querySelector("#dropButton").addEventListener("click", showSavedRockets);
-            canvas.addEventListener("click", handleClick);
-            window.setInterval(update, 100 / fps);
+            document.querySelector("#dropButton").addEventListener("click", showSavedRockets); // den Button werden EventListener gegeben, damit sie auf ein "click" Event lauschen, dass dann in der jeweiligen Funktion ausgeführt wird.
+            canvas.addEventListener("click", handleClick); //Canvas bekommt ebenfalls ein "click" Event, damit er reagieren kann, wenn Nutzer Rakete zum explodieren bringen will.
+            window.setInterval(update, 10 / fps); //in diesem Intervall wird das Fenster geupdatet 
         });
     }
     //Teil 1: Client 
     function displayRocket() {
         let formComponents = new FormData(document.forms[0]);
-        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel und Wert jeweils in rocket speichern
-        document.querySelector("div#rocketlist").innerHTML = rocket;
+        let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel und Wert wird jeweils in rocket gespeichern
+        document.querySelector("div#rocketlist").innerHTML = rocket; //damit sollen die Daten, der rocketlist hinzugefüht werden 
     }
     function updateRocket() {
         return __awaiter(this, void 0, void 0, function* () {
-            let newData = new FormData(document.forms[0]);
+            let newData = new FormData(document.forms[0]); //update des Formulars 
             let query = new URLSearchParams(newData); //umformatieren um url mitgeben zu können
             let response = yield fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString());
             let responseText = yield response.text();
@@ -129,10 +129,10 @@ var Feuerwerk;
     //Teil 2: Canvas
     function handleClick(_event) {
         let tempPosition = new Feuerwerk.Vector(_event.offsetX, _event.offsetY);
-        createFirework(tempPosition);
+        createFirework(tempPosition); //für das Feuerwerk wird eine Temporäre Position gegeben
     }
     function createFirework(tempPosition) {
-        console.log("createFirework");
+        console.log("createFirework"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
         let ExplosionTarget = document.getElementById("explosion");
         let ExplosionValue = ExplosionTarget.value;
         let LifetimeTarget = document.getElementById("lifetime_f");
@@ -149,15 +149,17 @@ var Feuerwerk;
         fireworks.push(firework);
     }
     function update() {
+        //Der Hintergrund wird geupdatet
         let canvas;
         let imgData;
         canvas = document.querySelector("canvas");
         if (!canvas)
             return;
         Feuerwerk.crc2 = canvas.getContext("2d");
-        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
+        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
         Feuerwerk.drawCanvas();
-        for (let i = fireworks.length - 1; i >= 0; i--) {
+        for (let i = fireworks.length - 1; i >= 0; i--) { //solange noch Daten im Firework Array sind, wird die function update ausgeführt, firework ist also noch Alive 
+            //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
             fireworks[i].draw();
             fireworks[i].update();
             if (!fireworks[i].isAlive()) {

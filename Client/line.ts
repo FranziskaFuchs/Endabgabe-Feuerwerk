@@ -1,7 +1,7 @@
 namespace Feuerwerk {
     console.log("line");
 
-    export class Line extends Particle {
+    export class Line extends Particle {        //Line = Subklasse von Particle
 
         constructor(_position: Vector, _velocity: Vector) {
             super();
