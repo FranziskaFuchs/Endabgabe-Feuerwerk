@@ -2,15 +2,15 @@ namespace Feuerwerk {
 
     window.addEventListener("load", handleLoad);
 
-    export let url: string = "https://fireworkendabgabe.herokuapp.com";
-    export let buttonClicked: number = 0;
-    export let rockets: any;
-    export let currentRocket: string;
+    let url: string = "https://fireworkendabgabe.herokuapp.com";
+    let buttonClicked: number = 0;
+    let rockets: any;
+    let currentRocket: string;
     export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
-    export let fireworks: Firework[] = [];
+    let fireworks: Firework[] = [];
     let fps: number = 10;
-   
+
 
 
     async function handleLoad(_event: Event): Promise<void> {
@@ -37,7 +37,7 @@ namespace Feuerwerk {
 
         canvas.addEventListener("click", handleClick);
         window.setInterval(update, 100 / fps);
-        
+
     }
 
     //Teil 1: Client 
@@ -201,7 +201,7 @@ namespace Feuerwerk {
             }
         }
 
-       
+
     }
 }
 

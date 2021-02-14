@@ -10,9 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var Feuerwerk;
 (function (Feuerwerk) {
     window.addEventListener("load", handleLoad);
-    Feuerwerk.url = "https://fireworkendabgabe.herokuapp.com";
-    Feuerwerk.buttonClicked = 0;
-    Feuerwerk.fireworks = [];
+    let url = "https://fireworkendabgabe.herokuapp.com";
+    let buttonClicked = 0;
+    let rockets;
+    let currentRocket;
+    let fireworks = [];
     let fps = 10;
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +47,7 @@ var Feuerwerk;
         return __awaiter(this, void 0, void 0, function* () {
             let newData = new FormData(document.forms[0]);
             let query = new URLSearchParams(newData); //umformatieren um url mitgeben zu können
-            let response = yield fetch(Feuerwerk.url + "?" + "command=update&rocket=" + Feuerwerk.currentRocket + "&" + query.toString());
+            let response = yield fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString());
             let responseText = yield response.text();
             alert(responseText);
         });
@@ -59,16 +61,16 @@ var Feuerwerk;
             console.log("Save rocket");
             let form = new FormData(document.forms[0]); //Daten aus Form holen
             let query = new URLSearchParams(form);
-            let response = yield fetch(Feuerwerk.url + "?" + query.toString()); //Daten von Server holen und an url hängen + in string umwandeln für Lesbarkeit --> in response speichern
+            let response = yield fetch(url + "?" + query.toString()); //Daten von Server holen und an url hängen + in string umwandeln für Lesbarkeit --> in response speichern
             let responseText = yield response.text(); //Daten in Textform in responseText speichern und ausgeben lassen
             alert(responseText);
         });
     }
     function getSavedRocketsFromDb() {
         return __awaiter(this, void 0, void 0, function* () {
-            let response = yield fetch(Feuerwerk.url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: holen über command "retrieve"
-            Feuerwerk.rockets = yield response.json();
-            for (let rocket of Feuerwerk.rockets) { //Durchlauf jeder Rakete in Collection rockets
+            let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: holen über command "retrieve"
+            rockets = yield response.json();
+            for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
                 rocketName.innerHTML = rocket["Name"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
                 document.querySelector("div#dropupContent").appendChild(rocketName); //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
@@ -77,20 +79,20 @@ var Feuerwerk;
         });
     }
     function chooseRocket(_event) {
-        Feuerwerk.currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
+        currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
         let parent = document.querySelector("div#dropupContent");
         parent.style.display = "none";
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
-        for (let rocket of Feuerwerk.rockets) { //Durchlauf jeder Rakete in Collection rockets
-            if (rocket["rocketName"] == Feuerwerk.currentRocket) {
+        for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
+            if (rocket["rocketName"] == currentRocket) {
                 //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
                 document.querySelector("div#rocketlist").innerHTML = "Name: " + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"]; //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
                 fillInputFields(rocket);
             }
         }
-        Feuerwerk.buttonClicked++;
+        buttonClicked++;
     }
     function fillInputFields(rocket) {
         document.querySelector("input#rocketname").value = rocket["rocketName"];
@@ -103,8 +105,8 @@ var Feuerwerk;
     }
     function deleteRocket() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(Feuerwerk.currentRocket);
-            let response = yield fetch(Feuerwerk.url + "?" + "command=delete&rocket=" + Feuerwerk.currentRocket); //Abfrage über url --> hier: löschen über command "delete"
+            console.log(currentRocket);
+            let response = yield fetch(url + "?" + "command=delete&rocket=" + currentRocket); //Abfrage über url --> hier: löschen über command "delete"
             let text = yield response.text();
             alert(text); //rocket deleted!
             document.querySelector("div#rocketlist").innerHTML = "";
@@ -112,7 +114,7 @@ var Feuerwerk;
     }
     function showSavedRockets() {
         let parent = document.querySelector("div#dropupContent");
-        if (Feuerwerk.buttonClicked % 2 == 0) { //button geklickt = gerade Zahl (auf)
+        if (buttonClicked % 2 == 0) { //button geklickt = gerade Zahl (auf)
             getSavedRocketsFromDb();
             parent.style.display = "block";
         }
@@ -122,7 +124,7 @@ var Feuerwerk;
                 parent.removeChild(parent.firstChild);
             }
         }
-        Feuerwerk.buttonClicked++;
+        buttonClicked++;
     }
     //Teil 2: Canvas
     function handleClick(_event) {
@@ -144,7 +146,7 @@ var Feuerwerk;
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = particleSizeTarget.value;
         let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
-        Feuerwerk.fireworks.push(firework);
+        fireworks.push(firework);
     }
     function update() {
         let canvas;
@@ -155,11 +157,11 @@ var Feuerwerk;
         Feuerwerk.crc2 = canvas.getContext("2d");
         imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height); //implementierung meines Hintergrunds
         Feuerwerk.drawCanvas();
-        for (let i = Feuerwerk.fireworks.length - 1; i >= 0; i--) {
-            Feuerwerk.fireworks[i].draw();
-            Feuerwerk.fireworks[i].update();
-            if (!Feuerwerk.fireworks[i].isAlive()) {
-                Feuerwerk.fireworks.splice(i, 1);
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+            fireworks[i].draw();
+            fireworks[i].update();
+            if (!fireworks[i].isAlive()) {
+                fireworks.splice(i, 1);
             }
         }
     }
