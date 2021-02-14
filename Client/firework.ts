@@ -23,11 +23,10 @@ namespace Feuerwerk {
             this.lifeTime = _lifetime;
             this.particleType = _particleType;
 
+
             switch (_particleType){
                 
-                case 0
-                
-                :
+                case 0:
                     for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
