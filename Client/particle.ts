@@ -10,7 +10,6 @@ namespace Feuerwerk {
         }
 
         public draw(_color: string, _particleRadius: number) {
-            console.log("draw Particle");
         }
 
         public move(): void {

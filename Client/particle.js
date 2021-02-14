@@ -6,7 +6,6 @@ var Feuerwerk;
         constructor() {
         }
         draw(_color, _particleRadius) {
-            console.log("draw Particle");
         }
         move() {
             this.velocity = Feuerwerk.Vector.getSum(this.velocity, new Feuerwerk.Vector(0, 0.01)); //Gravitaion
