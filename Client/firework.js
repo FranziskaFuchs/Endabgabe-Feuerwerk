@@ -26,6 +26,7 @@ var Feuerwerk;
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
+                    break;
                 default: console.log("wrong type"); // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
             }
         }
