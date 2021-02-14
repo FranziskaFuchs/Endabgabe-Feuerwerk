@@ -99,7 +99,7 @@ var Feuerwerk;
         document.querySelector("select#color").value = rocket["Color"];
         document.querySelector("input#amount").value = rocket["Amount"];
         document.querySelector("select#particleType").value = rocket["ParticleType"];
-        document.querySelector("input#ParticleSize").value = rocket["ParticleSize"];
+        document.querySelector("input#Size_P").value = rocket["ParticleSize"];
     }
     function deleteRocket() {
         return __awaiter(this, void 0, void 0, function* () {

@@ -116,7 +116,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
         (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["Amount"];
         (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["ParticleType"];
-        (<HTMLInputElement>document.querySelector("input#ParticleSize")).value = rocket["ParticleSize"];
+        (<HTMLInputElement>document.querySelector("input#Size_P")).value = rocket["ParticleSize"];
 
 
     }
