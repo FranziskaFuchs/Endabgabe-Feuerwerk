@@ -1,7 +1,7 @@
 namespace Feuerwerk{
     console.log("dot");
 
-    export class Dot extends Particle {  //Dot = Subklasse von Particle
+    export class Dot extends  Particle{  //Dot = Subklasse von Particle
 
         constructor(_position: Vector, _velocity: Vector){
             super();
