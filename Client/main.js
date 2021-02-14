@@ -10,7 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var Feuerwerk;
 (function (Feuerwerk) {
     window.addEventListener("load", handleLoad); // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
-    let url = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
+    //   let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
+    let url = "http://localhost:5002";
     let buttonClicked = 0;
     let rockets;
     let currentRocket;

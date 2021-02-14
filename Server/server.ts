@@ -34,11 +34,12 @@ export namespace Feuerwerk {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         
-        mongoClient.connect(err =>{
-            rocket = mongoClient.db("fireworks").collection("rocketlists");
-        console.log("Database connected: " + rocket);
-        });
+        mongoClient.c
 
+
+
+        rocket = mongoClient.db("fireworks").collection("rocketlists");
+        console.log("Database connected: " + rocket);
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {

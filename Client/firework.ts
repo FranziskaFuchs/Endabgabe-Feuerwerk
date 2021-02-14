@@ -49,8 +49,7 @@ namespace Feuerwerk {
 
                    
 
-               default: console.log("wrong type");
-               break;
+               default: console.log("wrong type")
                                                                     // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
 
             }
