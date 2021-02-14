@@ -3,7 +3,7 @@ var Feuerwerk;
 (function (Feuerwerk) {
     console.log("firework");
     class Firework {
-        constructor(_position, _type, _color, _speed, _amount, _particleRadius, _lifetime) {
+        constructor(_position, _particleType, _color, _speed, _amount, _particleRadius, _lifetime) {
             this.particleArray = []; //im Particle Array, werden die gewählten Partikel gelistet
             console.log(_lifetime); //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
@@ -11,23 +11,25 @@ var Feuerwerk;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
-            switch (_type) {
-                case "Rectangle":
+            switch (_particleType) {
+                case 0:
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
                     break;
-                case "Dot":
+                case 1:
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Dot(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
                     break;
-                case "Line":
+                case 2:
                     for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                     }
                     break;
-                default: console.log("wrong type"); // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
+                default:
+                    console.log("wrong type");
+                    return; // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
             }
         }
         draw() {

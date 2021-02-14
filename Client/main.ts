@@ -153,10 +153,10 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         console.log("createFirework");                                                  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
 
         let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
-        let ExplosionValue: string = ExplosionTarget.value;
-        console.log(ExplosionValue);
+        let ExplosionValue: any = ExplosionTarget.value;
+      
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
-        let LifetimeValue: any = LifetimeTarget.value;
+        let LifetimeValue: string = LifetimeTarget.value;
 
         let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
         let ColorValue: any = ColorTarget.value;
