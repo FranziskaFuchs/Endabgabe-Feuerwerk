@@ -54,3 +54,8 @@ button:hover{
     float: right;
     border:solid;
 }
+
+#dropupContent{
+    border:thin;
+    border: white;
+}
