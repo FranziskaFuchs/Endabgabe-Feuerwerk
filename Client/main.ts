@@ -91,7 +91,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     function chooseRocket(_event: Event): void {
         currentRocket = (<HTMLElement>_event.target).innerHTML;                                          //currentRocket entspricht Rakete die angezeigt werden soll
-     //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        //Wenn die Rakete ausgewählt wurde, soll Dropup Feld wieder herunterfahren
+     //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
      //   parent.style.display = "none";
 
      //   while (parent.firstChild) {
@@ -111,11 +111,11 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     function fillInputFields(rocket: any): void {
         (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
-        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["explosion"];
-        (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["lifetime"];
-        (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["color"];
-        (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["amount"];
-        (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["particleType"];
+        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];
+        (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["Lifetime"];
+        (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
+        (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["Amount"];
+        (<HTMLSelectElement>document.querySelector("select#particleType")).value = rocket["ParticleType"];
         (<HTMLInputElement>document.querySelector("input#ParticleSize")).value = rocket["ParticleSize"];
 
 

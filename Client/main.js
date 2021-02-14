@@ -79,7 +79,7 @@ var Feuerwerk;
     }
     function chooseRocket(_event) {
         currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
-        //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        //Wenn die Rakete ausgewählt wurde, soll Dropup Feld wieder herunterfahren
+        //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
         //   parent.style.display = "none";
         //   while (parent.firstChild) {
         //      parent.removeChild(parent.firstChild);
@@ -94,11 +94,11 @@ var Feuerwerk;
     }
     function fillInputFields(rocket) {
         document.querySelector("input#rocketname").value = rocket["rocketName"];
-        document.querySelector("input#explosion").value = rocket["explosion"];
-        document.querySelector("input#lifetime").value = rocket["lifetime"];
-        document.querySelector("select#color").value = rocket["color"];
-        document.querySelector("input#amount").value = rocket["amount"];
-        document.querySelector("select#particleType").value = rocket["particleType"];
+        document.querySelector("input#explosion").value = rocket["ExplosionSize"];
+        document.querySelector("input#lifetime").value = rocket["Lifetime"];
+        document.querySelector("select#color").value = rocket["Color"];
+        document.querySelector("input#amount").value = rocket["Amount"];
+        document.querySelector("select#particleType").value = rocket["ParticleType"];
         document.querySelector("input#ParticleSize").value = rocket["ParticleSize"];
     }
     function deleteRocket() {
