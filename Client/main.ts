@@ -102,14 +102,14 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
             if (rocket["rocketName"] == currentRocket) {                                                //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
                                                                                                         
                 (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML = "Name: " + "<br>" + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"];    //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
-                fillInputFields(rocket);
+                fillRocketFields(rocket);
             }
         }
 
      //   buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
 
-    function fillInputFields(rocket: any): void {
+    function fillRocketFields(rocket: any): void {
         (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
         (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];
         (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["Lifetime"];
