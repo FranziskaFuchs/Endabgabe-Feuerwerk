@@ -106,7 +106,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
             }
         }
 
-        buttonClicked++; //Arithmetischer Operator: Zuwachs
+     //   buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
 
     function fillInputFields(rocket: any): void {

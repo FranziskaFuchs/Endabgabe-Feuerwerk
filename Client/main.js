@@ -90,7 +90,7 @@ var Feuerwerk;
                 fillInputFields(rocket);
             }
         }
-        buttonClicked++; //Arithmetischer Operator: Zuwachs
+        //   buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
     function fillInputFields(rocket) {
         document.querySelector("input#rocketname").value = rocket["rocketName"];
