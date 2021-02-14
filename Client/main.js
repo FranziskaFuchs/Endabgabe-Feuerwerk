@@ -14,12 +14,12 @@ var Feuerwerk;
     let buttonClicked = 0;
     let rockets;
     let currentRocket;
+    let form;
     let fireworks = [];
     let fps = 10; // fps= frames per second
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
             let canvas;
-            let form;
             form = document.querySelector("form");
             canvas = document.querySelector("canvas");
             if (!canvas)
@@ -151,12 +151,11 @@ var Feuerwerk;
     function update() {
         //Der Hintergrund wird geupdatet
         let canvas;
-        let imgData;
         canvas = document.querySelector("canvas");
         if (!canvas)
             return;
         Feuerwerk.crc2 = canvas.getContext("2d");
-        imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
+        Feuerwerk.imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
         Feuerwerk.drawCanvas();
         for (let i = fireworks.length - 1; i >= 0; i--) { //solange noch Daten im Firework Array sind, wird die function update ausgeführt, firework ist also noch Alive 
             //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso

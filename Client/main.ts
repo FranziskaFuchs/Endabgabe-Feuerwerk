@@ -8,13 +8,14 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     let currentRocket: string;
     export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
+    let form: HTMLFormElement;
     let fireworks: Firework[] = [];
     let fps: number = 10;                // fps= frames per second
 
 
     async function handleLoad(_event: Event): Promise<void> {      //die async Funktion läuft außerhalb des Kontrolflusses & gibt impliziertes Promise Objekt zurück
         let canvas: HTMLCanvasElement | null;
-        let form: HTMLFormElement;
+        
 
         form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
@@ -177,7 +178,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     function update() {                                   
                                                                 //Der Hintergrund wird geupdatet
         let canvas: HTMLCanvasElement | null;
-        let imgData: ImageData;
+       
 
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
