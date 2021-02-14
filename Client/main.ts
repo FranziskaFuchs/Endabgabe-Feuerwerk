@@ -2,9 +2,8 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     window.addEventListener("load", handleLoad);   // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
 
-   
-   let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
-    //   let url: string = "http://localhost:5002"; 
+
+    let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
     let buttonClicked: number = 0;
     let rockets: any;
     let currentRocket: string;
@@ -24,7 +23,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
             return;
-
+console.log(!canvas);
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 

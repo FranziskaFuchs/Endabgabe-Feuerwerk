@@ -10,7 +10,6 @@ var Feuerwerk;
 (function (Feuerwerk) {
     window.addEventListener("load", handleLoad); // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
     let url = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
-    //   let url: string = "http://localhost:5002"; 
     let buttonClicked = 0;
     let rockets;
     let currentRocket;
@@ -25,6 +24,7 @@ var Feuerwerk;
             canvas = document.querySelector("canvas");
             if (!canvas)
                 return;
+            console.log(!canvas);
             Feuerwerk.crc2 = canvas.getContext("2d");
             Feuerwerk.imgData = Feuerwerk.crc2.getImageData(0, 0, canvas.width, canvas.height);
             Feuerwerk.drawCanvas(); //implementierung meines Hintergrunds
