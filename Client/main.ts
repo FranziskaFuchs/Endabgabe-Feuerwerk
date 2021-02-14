@@ -9,13 +9,14 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
     let form: HTMLFormElement;
+
     let fireworks: Firework[] = [];
-    let fps: number = 10;                // fps= frames per second
+    let fps: number = 10;
+    let canvas: HTMLCanvasElement | null;              // fps= frames per second
 
 
-    async function handleLoad(_event: Event): Promise<void> {      //die async Funktion läuft außerhalb des Kontrolflusses & gibt impliziertes Promise Objekt zurück
-        let canvas: HTMLCanvasElement | null;
-        
+    async function handleLoad(_event: Event): Promise<void> { 
+        console.log("load");                           //die async Funktion läuft außerhalb des Kontrolflusses & gibt impliziertes Promise Objekt zurüc
 
         form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
@@ -23,11 +24,11 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
             return;
 
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); 
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         drawCanvas();          //implementierung meines Hintergrunds
 
-        (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket);  
+        (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket);
         (<HTMLInputElement>document.querySelector("#updateButton")).addEventListener("click", updateRocket);
         (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetRocketlist);
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);
@@ -94,7 +95,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             if (rocket["rocketName"] == currentRocket) {
-                                                                                                       //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
+                //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
                 (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML = "Name: " + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"];    //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
                 fillInputFields(rocket);
             }
@@ -155,7 +156,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
         let ExplosionValue: any = ExplosionTarget.value;
-      
+
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
         let LifetimeValue: string = LifetimeTarget.value;
 
@@ -167,31 +168,32 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         let TypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
         let TypeValue: any = TypeTarget.value;
+        console.log(TypeTarget.value);
 
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeValue: any = particleSizeTarget.value;
-        
+
         let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
         fireworks.push(firework);
     }
 
-    function update() {                                   
-                                                                //Der Hintergrund wird geupdatet
+    function update() {
+        //Der Hintergrund wird geupdatet
         let canvas: HTMLCanvasElement | null;
-       
+
 
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         if (!canvas)
             return;
 
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); 
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         drawCanvas();
 
 
         for (let i: number = fireworks.length - 1; i >= 0; i--) {           //solange noch Daten im Firework Array sind, wird die function update ausgeführt, firework ist also noch Alive 
-                                                                            //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
+            //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
             fireworks[i].draw();
             fireworks[i].update();
             if (!fireworks[i].isAlive()) {

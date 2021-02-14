@@ -16,10 +16,11 @@ var Feuerwerk;
     let currentRocket;
     let form;
     let fireworks = [];
-    let fps = 10; // fps= frames per second
+    let fps = 10;
+    let canvas; // fps= frames per second
     function handleLoad(_event) {
         return __awaiter(this, void 0, void 0, function* () {
-            let canvas;
+            console.log("load"); //die async Funktion läuft außerhalb des Kontrolflusses & gibt impliziertes Promise Objekt zurüc
             form = document.querySelector("form");
             canvas = document.querySelector("canvas");
             if (!canvas)
@@ -143,6 +144,7 @@ var Feuerwerk;
         let AmountValue = AmountTarget.value;
         let TypeTarget = document.getElementById("particleType");
         let TypeValue = TypeTarget.value;
+        console.log(TypeTarget.value);
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = particleSizeTarget.value;
         let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);

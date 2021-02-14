@@ -11,6 +11,7 @@ var Feuerwerk;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
+            this.particleType = _particleType;
             switch (_particleType) {
                 case 0:
                     for (let i = 0; i < this.amount; i++) {
@@ -32,7 +33,8 @@ var Feuerwerk;
                     break;
                 default:
                     console.log("wrong type");
-                    return; // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
+                    break;
+                // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
             }
         }
         draw() {

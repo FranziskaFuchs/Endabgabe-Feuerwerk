@@ -8,6 +8,7 @@ namespace Feuerwerk {
         public speed: number;
         public amount: number;
         public particleRadius: number;
+        public particleType: number;
         private lifeTime: number;
 
 
@@ -20,6 +21,7 @@ namespace Feuerwerk {
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
+            this.particleType = _particleType;
 
             switch (_particleType){
                 
@@ -32,7 +34,7 @@ namespace Feuerwerk {
 
                 case 1:
                     for (let i: number = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Dot(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Dot (this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Dot");
 
                     }
@@ -48,7 +50,8 @@ namespace Feuerwerk {
                    
 
                default: console.log("wrong type");
-                 return;                                                      // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
+               break;
+                                                                    // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
 
             }
         }
