@@ -90,8 +90,9 @@ var Feuerwerk;
                 fillRocketFields(rocket);
             }
         }
-        //   buttonClicked++; //Arithmetischer Operator: Zuwachs
+        buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
+    //Raket wird mit den Daten des Formulars gefüllt 
     function fillRocketFields(rocket) {
         document.querySelector("input#rocketname").value = rocket["rocketName"];
         document.querySelector("input#explosion").value = rocket["ExplosionSize"];
@@ -103,7 +104,7 @@ var Feuerwerk;
     }
     function deleteRocket() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(currentRocket);
+            //      console.log(currentRocket);
             let response = yield fetch(url + "?" + "command=delete&rocket=" + currentRocket); //Abfrage über url --> hier: löschen über command "delete"
             let text = yield response.text();
             alert(text); //rocket deleted!

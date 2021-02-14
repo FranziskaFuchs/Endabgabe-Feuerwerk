@@ -106,12 +106,12 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
             }
         }
 
-     //   buttonClicked++; //Arithmetischer Operator: Zuwachs
+       buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
-
-    function fillRocketFields(rocket: any): void {
+//Raket wird mit den Daten des Formulars gefüllt 
+    function fillRocketFields(rocket: any): void { 
         (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
-        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];
+        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];          
         (<HTMLInputElement>document.querySelector("input#lifetime")).value = rocket["Lifetime"];
         (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
         (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["Amount"];
@@ -122,7 +122,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     async function deleteRocket(): Promise<void> {
-        console.log(currentRocket);
+  //      console.log(currentRocket);
         let response: Response = await fetch(url + "?" + "command=delete&rocket=" + currentRocket);       //Abfrage über url --> hier: löschen über command "delete"
         let text: string = await response.text();
         alert(text);                                                                                     //rocket deleted!
