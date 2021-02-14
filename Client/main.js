@@ -79,11 +79,11 @@ var Feuerwerk;
     }
     function chooseRocket(_event) {
         currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
-        //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
-        //   parent.style.display = "none";
-        //   while (parent.firstChild) {
-        //      parent.removeChild(parent.firstChild);
-        //  }
+        let parent = document.querySelector("div#dropupContent");
+        parent.style.display = "none";
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
         for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
             if (rocket["rocketName"] == currentRocket) { //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
                 document.querySelector("div#rocketlist").innerHTML = "Name: " + "<br>" + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"]; //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden

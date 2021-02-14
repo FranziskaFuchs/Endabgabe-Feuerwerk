@@ -91,12 +91,12 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     function chooseRocket(_event: Event): void {
         currentRocket = (<HTMLElement>_event.target).innerHTML;                                          //currentRocket entspricht Rakete die angezeigt werden soll
-     //   let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
-     //   parent.style.display = "none";
+        let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
+        parent.style.display = "none";
 
-     //   while (parent.firstChild) {
-      //      parent.removeChild(parent.firstChild);
-      //  }
+       while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             if (rocket["rocketName"] == currentRocket) {                                                //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
