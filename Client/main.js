@@ -75,7 +75,7 @@ var Feuerwerk;
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
-                rocketName.innerHTML = rocket["name"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
+                rocketName.innerHTML = rocket["rocketName" + "<br>"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
                 document.querySelector("div#dropupContent").appendChild(rocketName); //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
                 rocketName.addEventListener("click", chooseRocket); //click-Listener installieren --> damit Rocket Name klickbar wird, ruft neue Funktion auf
             }
@@ -137,11 +137,11 @@ var Feuerwerk;
         createFirework(tempPosition); //für das Feuerwerk wird eine Temporäre Position gegeben
     }
     function createFirework(tempPosition) {
-        console.log("createFirework"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
-        let explosionTarget = document.getElementById("explosion");
+        let explosionTarget = document.getElementById("explosion"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
         let explosionToConvert = "explosion";
         let explosionValue = Number(explosionToConvert);
         console.log(explosionTarget);
+        console.log(explosionValue);
         let lifetimeTarget = document.getElementById("lifetime_f");
         let lifetimeToConvert = "lifetime_f";
         let lifetimeValue = Number(lifetimeToConvert);
