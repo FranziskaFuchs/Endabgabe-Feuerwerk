@@ -165,26 +165,37 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     function createFirework(tempPosition: Vector) {                                     //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
         console.log("createFirework");                                                  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
 
-        let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
-        let ExplosionValue: any = ExplosionTarget.value;
+       let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
+       let ExplosionToConvert = "explosion";
+       let ExplosionValue = Number(ExplosionToConvert);
+       console.log(ExplosionTarget);
+      
 
         let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
-        let LifetimeValue: string = LifetimeTarget.value;
-
+        let LifetimeToConvert = "lifetime_f";
+        let LifetimeValue = Number(LifetimeToConvert);
+        console.log(LifetimeTarget);
+    
         let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
-        let ColorValue: any = ColorTarget.value;
+        let ColorValue: string = ColorTarget.value;
 
         let AmountTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("amount");
-        let AmountValue: any = AmountTarget.value;
+        let AmountToConver = "amount";
+        let AmountValue = Number(AmountToConver);
+        console.log(AmountTarget);
 
-        let TypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
-        let TypeValue: any = TypeTarget.value;
-        console.log(TypeTarget.value);
 
-        let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
-        let particleSizeValue: any = particleSizeTarget.value;
+        let ParticleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
+        let ParticleTypeToConvert = "particleType";
+        let ParticleTypeValue = Number(ParticleTypeToConvert);
+        console.log(ParticleTypeTarget);
 
-        let firework: Firework = new Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
+        let ParticleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
+        let ParticleSizeToConvert: ("Size_P");
+        let ParticleSizeValue = Number(ParticleSizeToConvert);
+        console.log(ParticleSizeTarget);
+
+        let firework: Firework = new Firework(tempPosition, LifetimeValue, ColorValue, AmountValue, ExplosionValue, ParticleTypeValue, ParticleSizeValue * fps / 2);
         fireworks.push(firework);
     }
 

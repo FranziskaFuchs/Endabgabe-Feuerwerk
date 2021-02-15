@@ -139,19 +139,28 @@ var Feuerwerk;
     function createFirework(tempPosition) {
         console.log("createFirework"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
         let ExplosionTarget = document.getElementById("explosion");
-        let ExplosionValue = ExplosionTarget.value;
+        let ExplosionToConvert = "explosion";
+        let ExplosionValue = Number(ExplosionToConvert);
+        console.log(ExplosionTarget);
         let LifetimeTarget = document.getElementById("lifetime_f");
-        let LifetimeValue = LifetimeTarget.value;
+        let LifetimeToConvert = "lifetime_f";
+        let LifetimeValue = Number(LifetimeToConvert);
+        console.log(LifetimeTarget);
         let ColorTarget = document.getElementById("color");
         let ColorValue = ColorTarget.value;
         let AmountTarget = document.getElementById("amount");
-        let AmountValue = AmountTarget.value;
-        let TypeTarget = document.getElementById("particleType");
-        let TypeValue = TypeTarget.value;
-        console.log(TypeTarget.value);
-        let particleSizeTarget = document.getElementById("Size_P");
-        let particleSizeValue = particleSizeTarget.value;
-        let firework = new Feuerwerk.Firework(tempPosition, ExplosionValue, LifetimeValue, ColorValue, AmountValue, TypeValue, particleSizeValue * fps / 2);
+        let AmountToConver = "amount";
+        let AmountValue = Number(AmountToConver);
+        console.log(AmountTarget);
+        let ParticleTypeTarget = document.getElementById("particleType");
+        let ParticleTypeToConvert = "particleType";
+        let ParticleTypeValue = Number(ParticleTypeToConvert);
+        console.log(ParticleTypeTarget);
+        let ParticleSizeTarget = document.getElementById("Size_P");
+        let ParticleSizeToConvert;
+        let ParticleSizeValue = Number(ParticleSizeToConvert);
+        console.log(ParticleSizeTarget);
+        let firework = new Feuerwerk.Firework(tempPosition, LifetimeValue, ColorValue, AmountValue, ExplosionValue, ParticleTypeValue, ParticleSizeValue * fps / 2);
         fireworks.push(firework);
     }
     function update() {
