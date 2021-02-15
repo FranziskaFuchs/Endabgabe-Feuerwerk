@@ -139,18 +139,18 @@ var Feuerwerk;
     function createFirework(tempPosition) {
         console.log("create firework"); //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
         let explosionTarget = document.getElementById("explosion"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
-        let explosionValue = Number(explosionTarget);
+        let explosionValue = Number(explosionTarget.value);
         console.log(explosionValue);
         let lifetimeTarget = document.getElementById("lifetime_f");
-        let lifetimeValue = Number(lifetimeTarget);
+        let lifetimeValue = Number(lifetimeTarget.value);
         let colorTarget = document.getElementById("color");
         let colorValue = colorTarget.value;
         let amountTarget = document.getElementById("amount");
-        let amountValue = Number(amountTarget);
+        let amountValue = Number(amountTarget.value);
         let particleTypeTarget = document.getElementById("particleType");
-        let particleTypeValue = Number(particleTypeTarget);
+        let particleTypeValue = Number(particleTypeTarget.value);
         let particleSizeTarget = document.getElementById("Size_P");
-        let particleSizeValue = Number(particleSizeTarget);
+        let particleSizeValue = Number(particleSizeTarget.value);
         let firework = new Feuerwerk.Firework(tempPosition, particleTypeValue, colorValue, amountValue, explosionValue, particleSizeValue, lifetimeValue * fps / 2);
         fireworks.push(firework);
     }
