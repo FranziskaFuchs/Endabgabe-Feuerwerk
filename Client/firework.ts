@@ -5,39 +5,36 @@ namespace Feuerwerk {
 
         public position: Vector;                      //Werten wird ein Typ zugeordnet
         public color: string;
+        public explosion: number;
         public amount: number;
-     //   public explosion: number;
         public particleRadius: number;
-        public particleType: number;
         private lifeTime: number;
 
 
 
         protected particleArray: Particle[] = [];                        //im Particle Array, werden die gewählten Partikel gelistet
 
-        constructor(_position: Vector, _particleType: number, _color: string, _amount: number,_explosion: number, _particleRadius: number, _lifetime: number) {
+        constructor(_position: Vector, _particleType: number, _color: string, _amount: number, _explosion: number, _particleRadius: number, _lifetime: number) {
 
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
-           
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
-            this.particleType = _explosion;
 
 
             switch (_particleType) {
 
                 case 0:
                     for (let i: number = 0; i < this.amount; i++) {                            //i wird gleich 0 gesetzt, solange i kliener als die Anzahl ist wird in das particle Array ein neues Rectangel gepusht 
-                        this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_particleType, Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_explosion, Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
                     break;
 
                 case 1:
                     for (let i: number = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Dot(this.position, Vector.getuberVector(_particleType, Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Dot(this.position, Vector.getuberVector(_explosion, Vector.getRandom(-1, 1))));
                         console.log("Dot");
 
                     }
@@ -45,11 +42,13 @@ namespace Feuerwerk {
 
                 case 2:
                     for (let i: number = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Line(this.position, Vector.getuberVector(_particleType, Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Line(this.position, Vector.getuberVector(_explosion, Vector.getRandom(-1, 1))));
                         console.log("Line");
                     }
                     break;
+
                 default: console.log("wrong type")
+                    return;
                 // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    
 
             }

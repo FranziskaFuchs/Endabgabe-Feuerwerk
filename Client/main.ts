@@ -165,37 +165,37 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     function createFirework(tempPosition: Vector) {                                     //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
         console.log("createFirework");                                                  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
 
-       let ExplosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
-       let ExplosionToConvert = "explosion";
-       let ExplosionValue = Number(ExplosionToConvert);
-       console.log(ExplosionTarget);
+       let explosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");
+       let explosionToConvert = "explosion";
+       let explosionValue = Number(explosionToConvert);
+       console.log(explosionTarget);
       
 
-        let LifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
-        let LifetimeToConvert = "lifetime_f";
-        let LifetimeValue = Number(LifetimeToConvert);
-        console.log(LifetimeTarget);
+        let lifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
+        let lifetimeToConvert = "lifetime_f";
+        let lifetimeValue = Number(lifetimeToConvert);
+        console.log(lifetimeTarget);
     
-        let ColorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
-        let ColorValue: string = ColorTarget.value;
+        let colorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
+        let colorValue: string = colorTarget.value;
 
-        let AmountTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("amount");
-        let AmountToConver = "amount";
-        let AmountValue = Number(AmountToConver);
-        console.log(AmountTarget);
+        let amountTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("amount");
+        let amountToConver = "amount";
+        let amountValue = Number(amountToConver);
+        console.log(amountTarget);
 
 
-        let ParticleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
-        let ParticleTypeToConvert = "particleType";
-        let ParticleTypeValue = Number(ParticleTypeToConvert);
-        console.log(ParticleTypeTarget);
+        let particleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
+        let particleTypeToConvert = "particleType";
+        let particleTypeValue = Number(particleTypeToConvert);
+        console.log(particleTypeTarget);
 
-        let ParticleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
-        let ParticleSizeToConvert: ("Size_P");
-        let ParticleSizeValue = Number(ParticleSizeToConvert);
-        console.log(ParticleSizeTarget);
+        let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
+        let particleSizeToConvert: ("Size_P");
+        let particleSizeValue = Number(particleSizeToConvert);
+        console.log(particleSizeTarget);
 
-        let firework: Firework = new Firework(tempPosition, LifetimeValue, ColorValue, AmountValue, ExplosionValue, ParticleTypeValue, ParticleSizeValue * fps / 2);
+        let firework: Firework = new Firework(tempPosition, lifetimeValue, colorValue, amountValue, explosionValue, particleTypeValue,particleSizeValue * fps / 2);
         fireworks.push(firework);
     }
 

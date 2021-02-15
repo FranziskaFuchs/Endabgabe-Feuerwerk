@@ -9,27 +9,28 @@ var Feuerwerk;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
-            this.particleType = _explosion;
             switch (_particleType) {
                 case 0:
                     for (let i = 0; i < this.amount; i++) { //i wird gleich 0 gesetzt, solange i kliener als die Anzahl ist wird in das particle Array ein neues Rectangel gepusht 
-                        this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_particleType, Feuerwerk.Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
                     break;
                 case 1:
                     for (let i = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Feuerwerk.Dot(this.position, Feuerwerk.Vector.getuberVector(_particleType, Feuerwerk.Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Feuerwerk.Dot(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Dot");
                     }
                     break;
                 case 2:
                     for (let i = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_particleType, Feuerwerk.Vector.getRandom(-1, 1))));
+                        this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Line");
                     }
                     break;
-                default: console.log("wrong type");
+                default:
+                    console.log("wrong type");
+                    return;
                 // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    
             }
         }

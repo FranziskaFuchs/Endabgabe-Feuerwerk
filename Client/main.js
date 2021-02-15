@@ -138,29 +138,29 @@ var Feuerwerk;
     }
     function createFirework(tempPosition) {
         console.log("createFirework"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
-        let ExplosionTarget = document.getElementById("explosion");
-        let ExplosionToConvert = "explosion";
-        let ExplosionValue = Number(ExplosionToConvert);
-        console.log(ExplosionTarget);
-        let LifetimeTarget = document.getElementById("lifetime_f");
-        let LifetimeToConvert = "lifetime_f";
-        let LifetimeValue = Number(LifetimeToConvert);
-        console.log(LifetimeTarget);
-        let ColorTarget = document.getElementById("color");
-        let ColorValue = ColorTarget.value;
-        let AmountTarget = document.getElementById("amount");
-        let AmountToConver = "amount";
-        let AmountValue = Number(AmountToConver);
-        console.log(AmountTarget);
-        let ParticleTypeTarget = document.getElementById("particleType");
-        let ParticleTypeToConvert = "particleType";
-        let ParticleTypeValue = Number(ParticleTypeToConvert);
-        console.log(ParticleTypeTarget);
-        let ParticleSizeTarget = document.getElementById("Size_P");
-        let ParticleSizeToConvert;
-        let ParticleSizeValue = Number(ParticleSizeToConvert);
-        console.log(ParticleSizeTarget);
-        let firework = new Feuerwerk.Firework(tempPosition, LifetimeValue, ColorValue, AmountValue, ExplosionValue, ParticleTypeValue, ParticleSizeValue * fps / 2);
+        let explosionTarget = document.getElementById("explosion");
+        let explosionToConvert = "explosion";
+        let explosionValue = Number(explosionToConvert);
+        console.log(explosionTarget);
+        let lifetimeTarget = document.getElementById("lifetime_f");
+        let lifetimeToConvert = "lifetime_f";
+        let lifetimeValue = Number(lifetimeToConvert);
+        console.log(lifetimeTarget);
+        let colorTarget = document.getElementById("color");
+        let colorValue = colorTarget.value;
+        let amountTarget = document.getElementById("amount");
+        let amountToConver = "amount";
+        let amountValue = Number(amountToConver);
+        console.log(amountTarget);
+        let particleTypeTarget = document.getElementById("particleType");
+        let particleTypeToConvert = "particleType";
+        let particleTypeValue = Number(particleTypeToConvert);
+        console.log(particleTypeTarget);
+        let particleSizeTarget = document.getElementById("Size_P");
+        let particleSizeToConvert;
+        let particleSizeValue = Number(particleSizeToConvert);
+        console.log(particleSizeTarget);
+        let firework = new Feuerwerk.Firework(tempPosition, lifetimeValue, colorValue, amountValue, explosionValue, particleTypeValue, particleSizeValue * fps / 2);
         fireworks.push(firework);
     }
     function update() {
