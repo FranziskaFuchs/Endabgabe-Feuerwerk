@@ -154,6 +154,7 @@ var Feuerwerk;
         console.log(amountTarget);
         let particleTypeTarget = document.getElementById("particleType");
         let particleTypeValue = Number(particleTypeTarget);
+        console.log("particleType");
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeToConvert;
         let particleSizeValue = Number(particleSizeToConvert);
