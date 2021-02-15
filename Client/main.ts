@@ -186,9 +186,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
 
         let particleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
-        let particleTypeToConvert = "particleType";
-        let particleTypeValue = Number(particleTypeToConvert);
-        console.log(particleTypeTarget);
+        let particleTypeValue = Number(particleTypeTarget);
 
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeToConvert: ("Size_P");
