@@ -71,11 +71,11 @@ var Feuerwerk;
     function getSavedRocketsFromDb() {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("get Saved Rockets From Db");
-            let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
+            let response = yield fetch(url); //+ "?" + "command=retrieve"            //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
-                rocketName.innerHTML = rocket["rocketName" + "<br>"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
+                rocketName.innerHTML = rocket["rocketName"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
                 document.querySelector("div#dropupContent").appendChild(rocketName); //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
                 rocketName.addEventListener("click", chooseRocket); //click-Listener installieren --> damit Rocket Name klickbar wird, ruft neue Funktion auf
             }

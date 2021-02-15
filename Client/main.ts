@@ -82,12 +82,12 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     async function getSavedRocketsFromDb(): Promise<void> {
         console.log("get Saved Rockets From Db");
-        let response: Response = await fetch(url + "?" + "command=retrieve");                    //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
+        let response: Response = await fetch(url);        //+ "?" + "command=retrieve"            //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
         rockets = await response.json();
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             let rocketName: HTMLElement = document.createElement("a");                                  //Element a wird erstellt --> in rocketName gespeichert
-            rocketName.innerHTML = rocket["rocketName" + "<br>"];                                                      //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
+            rocketName.innerHTML = rocket["rocketName"];                                                      //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
             (<HTMLElement>document.querySelector("div#dropupContent")).appendChild(rocketName);         //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
             rocketName.addEventListener("click", chooseRocket);                                         //click-Listener installieren --> damit Rocket Name klickbar wird, ruft neue Funktion auf
         }
