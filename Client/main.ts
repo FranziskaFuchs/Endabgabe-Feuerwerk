@@ -165,10 +165,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     function createFirework(tempPosition: Vector) {                                     //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
                                                                                          
        let explosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
-       let explosionToConvert = "explosion";
-       let explosionValue = Number(explosionToConvert);
-       console.log(explosionTarget);
-       console.log(explosionValue);
+       let explosionValue = Number(explosionTarget);
       
 
         let lifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
@@ -187,8 +184,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         let particleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
         let particleTypeValue = Number(particleTypeTarget);
-        console.log("particleType");
-
+      
 
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
         let particleSizeToConvert: ("Size_P");

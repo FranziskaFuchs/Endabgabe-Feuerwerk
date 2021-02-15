@@ -138,10 +138,7 @@ var Feuerwerk;
     }
     function createFirework(tempPosition) {
         let explosionTarget = document.getElementById("explosion"); //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
-        let explosionToConvert = "explosion";
-        let explosionValue = Number(explosionToConvert);
-        console.log(explosionTarget);
-        console.log(explosionValue);
+        let explosionValue = Number(explosionTarget);
         let lifetimeTarget = document.getElementById("lifetime_f");
         let lifetimeToConvert = "lifetime_f";
         let lifetimeValue = Number(lifetimeToConvert);
@@ -154,7 +151,6 @@ var Feuerwerk;
         console.log(amountTarget);
         let particleTypeTarget = document.getElementById("particleType");
         let particleTypeValue = Number(particleTypeTarget);
-        console.log("particleType");
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeToConvert;
         let particleSizeValue = Number(particleSizeToConvert);
