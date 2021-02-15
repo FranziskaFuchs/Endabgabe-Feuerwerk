@@ -3,10 +3,10 @@ namespace Feuerwerk {
 
     export class Firework {             //Klasse Feuerwerk, baut aus den eingegebenen Nutzerdaten eine Rakete
 
-        public position: Vector;
+        public position: Vector;                      //Werten wird ein Typ zugeordnet
         public color: string;
         public speed: number;
-        public amount: number;
+        public Amount: number;
         public particleRadius: number;
         public particleType: number;
         private lifeTime: number;
@@ -18,47 +18,44 @@ namespace Feuerwerk {
             console.log(_lifetime);     	                             //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
-            this.amount = _amount;
+            this.Amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
             this.particleType = _particleType;
 
 
-            switch (_particleType){
-                
+            switch (_particleType) {
+
                 case 0:
-                    for (let i: number = 0; i < this.amount; i++) {
+                    for (let i: number = 0; i < this.Amount; i++) {
                         this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
                     break;
 
                 case 1:
-                    for (let i: number = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Dot (this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
+                    for (let i: number = 1; i < this.Amount; i++) {
+                        this.particleArray.push(new Dot(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Dot");
 
                     }
                     break;
 
                 case 2:
-                    for (let i: number = 0; i < this.amount; i++) {
+                    for (let i: number = 2; i < this.Amount; i++) {
                         this.particleArray.push(new Line(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Line");
                     }
                     break;
-
-                   
-
-               default: console.log("wrong type")
-                                                                    // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    return;
+                default: console.log("wrong type")
+                // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    
 
             }
         }
 
 
         public draw(): void {
-            for (let i: number = 0; i < this.particleArray.length; i++) {
+            for (let i: number = 0; i < this.particleArray.length; i++) {           //for Schleife: erster Ausdruck wird ausgeführt, bevor Schleife beginnt.Der zweite ist die Bedingung für die Ausführung der Schleife.Der 3. wird nach der Ausführung jeden Codeblocks ausgeführt.
                 this.particleArray[i].draw(this.color, this.particleRadius);
 
             }
