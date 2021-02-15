@@ -48,7 +48,8 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     //Teil 1: Client 
 
-    function displayRocket(): void {                             // In dieser Funktion wird auf das Formular zugegriffen, aus dem die Raketendaten geholt werden 
+    function displayRocket(): void {  
+        console.log("display Rocket");                          // In dieser Funktion wird auf das Formular zugegriffen, aus dem die Raketendaten geholt werden 
         let formComponents: FormData = new FormData(document.forms[0]); //das Neue FormData Element wird mit den Schlüssel-Werte Paaren aus dem Formular gefüllt--> alle Formulare werden eigens vom Programm verwaltet und da ich nur eines habe, greift man auf die Stelle 0 des Arrays zu 
         let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel-Werte Paare werden in Typescript gespeichert
 
@@ -56,6 +57,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     async function updateRocket(): Promise<void> {
+        console.log("update Rocket");
         let newData: FormData = new FormData(document.forms[0]);                   //update des Formulars -->anschließend wird mit await fetch eine POP UP ausgabe zurück gegeben
         let query: URLSearchParams = new URLSearchParams(<any>newData);            //umformatieren um url mitgeben zu können
         let response: Response = await fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString()); //Schlüsselwort await ist eine syntaktische Abkürzung, die anzeigt, dass ein Codeteil asynchron auf einen anderen warten soll
@@ -78,6 +80,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     async function getSavedRocketsFromDb(): Promise<void> {
+        console.log("get Saved Rockets From Db");
         let response: Response = await fetch(url + "?" + "command=retrieve");                    //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
         rockets = await response.json();
 
@@ -90,6 +93,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     function chooseRocket(_event: Event): void {
+        console.log("choose Rocket");
         currentRocket = (<HTMLElement>_event.target).innerHTML;                                          //currentRocket entspricht Rakete die angezeigt werden soll
         let parent = (<HTMLElement>document.querySelector("div#dropupContent"));
         parent.style.display = "none";
@@ -122,6 +126,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     async function deleteRocket(): Promise<void> {
+        console.log("delete Rocket");
         let response: Response = await fetch(url + "?" + "command=delete&rocket=" + currentRocket);       //Abfrage über url --> hier: löschen über command "delete"
         let text: string = await response.text();
         alert(text);                                                                                     //rocket deleted!
@@ -130,6 +135,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
 
     function showSavedRockets(): void {
+        console.log("show saved Rockets");
         let parent = (<HTMLElement>document.querySelector("div#dropupContent"));
 
         if (buttonClicked % 2 == 0) {                                                                    //button geklickt = gerade Zahl (auf)

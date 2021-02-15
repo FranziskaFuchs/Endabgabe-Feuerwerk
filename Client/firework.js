@@ -4,7 +4,6 @@ var Feuerwerk;
     class Firework {
         constructor(_position, _particleType, _color, _speed, _amount, _particleRadius, _lifetime) {
             this.particleArray = []; //im Particle Array, werden die gewählten Partikel gelistet
-            console.log(_lifetime); //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
@@ -13,7 +12,7 @@ var Feuerwerk;
             this.particleType = _particleType;
             switch (_particleType) {
                 case 0:
-                    for (let i = 0; i < this.amount; i++) {
+                    for (let i = 0; i < this.amount; i++) { //i wird gleich 0 gesetzt, solange i kliener als die Anzahl ist wird in das particle Array ein neues Rectangel gepusht 
                         this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
@@ -41,13 +40,13 @@ var Feuerwerk;
         }
         update() {
             console.log(this.lifeTime);
-            this.lifeTime--;
+            this.lifeTime--; //verringer lifeTime wenn i kleiner als die Länge des particle Arrays ist,dann führe die move Funktion von Particle aus, anschließend erhöhe  i um 1
             for (let i = 0; i < this.particleArray.length; i++) {
                 this.particleArray[i].move();
             }
         }
         isAlive() {
-            if (this.lifeTime == 0) {
+            if (this.lifeTime == 0) { //wenn die beiden Operatoren gleich sind, wird false zurückgegeben, ansonsten true
                 return false;
             }
             else {

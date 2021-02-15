@@ -38,12 +38,14 @@ var Feuerwerk;
     }
     //Teil 1: Client 
     function displayRocket() {
+        console.log("display Rocket"); // In dieser Funktion wird auf das Formular zugegriffen, aus dem die Raketendaten geholt werden 
         let formComponents = new FormData(document.forms[0]); //das Neue FormData Element wird mit den Schlüssel-Werte Paaren aus dem Formular gefüllt--> alle Formulare werden eigens vom Programm verwaltet und da ich nur eines habe, greift man auf die Stelle 0 des Arrays zu 
         let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel-Werte Paare werden in Typescript gespeichert
         document.querySelector("div#rocketlist").innerHTML = rocket; //damit sollen die Daten/Die Rakete, der rocketlist hinzugefüht werden 
     }
     function updateRocket() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("update Rocket");
             let newData = new FormData(document.forms[0]); //update des Formulars -->anschließend wird mit await fetch eine POP UP ausgabe zurück gegeben
             let query = new URLSearchParams(newData); //umformatieren um url mitgeben zu können
             let response = yield fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString()); //Schlüsselwort await ist eine syntaktische Abkürzung, die anzeigt, dass ein Codeteil asynchron auf einen anderen warten soll
@@ -67,6 +69,7 @@ var Feuerwerk;
     }
     function getSavedRocketsFromDb() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("get Saved Rockets From Db");
             let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
@@ -78,6 +81,7 @@ var Feuerwerk;
         });
     }
     function chooseRocket(_event) {
+        console.log("choose Rocket");
         currentRocket = _event.target.innerHTML; //currentRocket entspricht Rakete die angezeigt werden soll
         let parent = document.querySelector("div#dropupContent");
         parent.style.display = "none";
@@ -104,6 +108,7 @@ var Feuerwerk;
     }
     function deleteRocket() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("delete Rocket");
             let response = yield fetch(url + "?" + "command=delete&rocket=" + currentRocket); //Abfrage über url --> hier: löschen über command "delete"
             let text = yield response.text();
             alert(text); //rocket deleted!
@@ -111,6 +116,7 @@ var Feuerwerk;
         });
     }
     function showSavedRockets() {
+        console.log("show saved Rockets");
         let parent = document.querySelector("div#dropupContent");
         if (buttonClicked % 2 == 0) { //button geklickt = gerade Zahl (auf)
             getSavedRocketsFromDb();
