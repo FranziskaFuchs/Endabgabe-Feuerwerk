@@ -6,31 +6,32 @@ var Feuerwerk;
             this.y = _y;
             this.calcLength();
         }
+        //Statische Methoden werden ohne Instanzierung einer Klasse aufgerufen und sind über eine erzeugte Instanz nicht aufrufbar. Oft werden in statische Methoden für Hilfsfunktionen verwendet.
         static getRandom(_min, _max) {
             let tempVector = new Vector(0, 0);
             tempVector.set(_min + Math.random() * (_max - _min), _min + Math.random() * (_max - _min));
             return tempVector;
         }
-        static getDifference(_v0, _v1) {
-            let tempVector = new Vector(0, 0);
-            tempVector.set(_v0.x - _v1.x, _v0.y - _v1.y);
-            return tempVector;
-        }
-        static getSum(_v0, _v1) {
-            let tempVector = new Vector(0, 0);
-            tempVector.set(_v0.x + _v1.x, _v0.y + _v1.y);
-            return tempVector;
-        }
+        //   public static getDifference(_v0: Vector, _v1: Vector): Vector {
+        //      let tempVector: Vector = new Vector(0, 0);
+        //     tempVector.set(_v0.x - _v1.x, _v0.y - _v1.y);
+        //      return tempVector;
+        //   }
+        //  public static getSum(_v0: Vector, _v1: Vector): Vector {
+        //      let tempVector: Vector = new Vector(0, 0);
+        //     tempVector.set(_v0.x + _v1.x, _v0.y + _v1.y);
+        //      return tempVector;
+        //  }
         static getScaled(_v, _scale) {
             let tempVector = new Vector(0, 0);
             tempVector.set(_v.x * _scale, _v.y * _scale);
             return tempVector;
         }
-        static getLength(_vector) {
-            let templength;
-            templength = Math.sqrt((_vector.x * _vector.x) + (_vector.y * _vector.y));
-            return templength;
-        }
+        //   public static getLength(_vector: Vector): number {
+        //      let templength: number;
+        //       templength = Math.sqrt((_vector.x * _vector.x) + (_vector.y * _vector.y));
+        //       return templength;
+        //   }
         static getuberVector(_length, _direction) {
             let tempVector = new Vector(_direction.x / (_direction.length), _direction.y / (_direction.length));
             tempVector = this.getScaled(tempVector, _length);
