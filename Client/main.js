@@ -75,7 +75,7 @@ var Feuerwerk;
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
-                rocketName.innerHTML = rocket["rocketName"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
+                rocketName.innerHTML = rocket["<br>" + "rocketName" + "<br>"]; //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
                 document.querySelector("div#dropupContent").appendChild(rocketName); //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
                 rocketName.addEventListener("click", chooseRocket); //click-Listener installieren --> damit Rocket Name klickbar wird, ruft neue Funktion auf
             }

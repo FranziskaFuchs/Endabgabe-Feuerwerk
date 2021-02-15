@@ -87,7 +87,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             let rocketName: HTMLElement = document.createElement("a");                                  //Element a wird erstellt --> in rocketName gespeichert
-            rocketName.innerHTML = rocket["rocketName"];                                                      //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
+            rocketName.innerHTML = rocket["<br>" + "rocketName" + "<br>"];                                                      //Inhalt des Elements soll passendem Wert zum Schlüssel "Name" entsprechen
             (<HTMLElement>document.querySelector("div#dropupContent")).appendChild(rocketName);         //Wert (Kind) von Schlüssel "Name" (Parent) in dropContent div speichern
             rocketName.addEventListener("click", chooseRocket);                                         //click-Listener installieren --> damit Rocket Name klickbar wird, ruft neue Funktion auf
         }
@@ -162,6 +162,8 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     }
 
+        
+    
     function createFirework(tempPosition: Vector) {    
         console.log("create firework");                              //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
                                                                                          

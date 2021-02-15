@@ -2,14 +2,14 @@ var Feuerwerk;
 (function (Feuerwerk) {
     console.log("firework");
     class Firework {
-        constructor(_position, _particleType, _color, _amount, _explosion, _particleRadius, _lifetime) {
+        constructor(_position, _particleTypeValue, _color, _amount, _explosion, _particleRadius, _lifetime) {
             this.particleArray = []; //im Particle Array, werden die gewählten Partikel gelistet
             this.position = _position;
             this.color = _color;
             this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
-            switch (_particleType) {
+            switch (_particleTypeValue) {
                 case 0:
                     for (let i = 0; i < this.amount; i++) { //i wird gleich 0 gesetzt, solange i kliener als die Anzahl ist wird in das particle Array ein neues Rectangel gepusht 
                         this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
