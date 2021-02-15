@@ -149,6 +149,7 @@ var Feuerwerk;
         let amountValue = Number(amountTarget.value);
         let particleTypeTarget = document.getElementById("particleType");
         let particleTypeValue = Number(particleTypeTarget.value);
+        console.log(particleTypeTarget.value);
         let particleSizeTarget = document.getElementById("Size_P");
         let particleSizeValue = Number(particleSizeTarget.value);
         let firework = new Feuerwerk.Firework(tempPosition, particleTypeValue, colorValue, amountValue, explosionValue, particleSizeValue, lifetimeValue * fps / 2);
