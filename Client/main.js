@@ -94,7 +94,7 @@ var Feuerwerk;
     }
     //Raket wird mit den Daten des Formulars gefüllt 
     function fillRocketFields(rocket) {
-        document.querySelector("input#rocketname").value = rocket["rocketName"];
+        document.querySelector("input#name").value = rocket["rocketName"];
         document.querySelector("input#explosion").value = rocket["ExplosionSize"];
         document.querySelector("input#lifetime_f").value = rocket["Lifetime"];
         document.querySelector("select#color").value = rocket["Color"];

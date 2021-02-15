@@ -110,7 +110,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     }
     //Raket wird mit den Daten des Formulars gefüllt 
     function fillRocketFields(rocket: any): void {
-        (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
+        (<HTMLInputElement>document.querySelector("input#name")).value = rocket["rocketName"];
         (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];
         (<HTMLInputElement>document.querySelector("input#lifetime_f")).value = rocket["Lifetime"];
         (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
