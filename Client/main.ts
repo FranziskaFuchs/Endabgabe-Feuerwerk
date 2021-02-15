@@ -82,7 +82,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     async function getSavedRocketsFromDb(): Promise<void> {
         console.log("get Saved Rockets From Db");
-        let response: Response = await fetch(url);        //+ "?" + "command=retrieve"            //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
+        let response: Response = await fetch(url + "?" + "command=retrieve" );           //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
         rockets = await response.json();
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
@@ -195,7 +195,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         let particleSizeValue = Number(particleSizeToConvert);
         console.log(particleSizeTarget);
 
-        let firework: Firework = new Firework(tempPosition, lifetimeValue, colorValue, amountValue, explosionValue, particleTypeValue,particleSizeValue * fps / 2);
+        let firework: Firework = new Firework(tempPosition, particleTypeValue, colorValue, amountValue, explosionValue,particleSizeValue, lifetimeValue * fps / 2);
         fireworks.push(firework);
     }
 

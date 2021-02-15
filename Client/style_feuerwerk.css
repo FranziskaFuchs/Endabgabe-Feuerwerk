@@ -34,8 +34,6 @@ form{
     right: 10px;
         }
 
-
-
 button{
     margin-top: 1em;
     background-color:thistle;
@@ -53,5 +51,12 @@ button:hover{
     position:relative;
     float: right;
     border:solid;
+}
+
+#dropupContent{
+    margin:auto;
+    border: solid;
+    color: white;
+    height: 10em;
 }
 

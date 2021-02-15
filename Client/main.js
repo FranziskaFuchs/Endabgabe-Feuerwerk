@@ -71,7 +71,7 @@ var Feuerwerk;
     function getSavedRocketsFromDb() {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("get Saved Rockets From Db");
-            let response = yield fetch(url); //+ "?" + "command=retrieve"            //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
+            let response = yield fetch(url + "?" + "command=retrieve"); //Abfrage über url ob Daten gespeichert, geholt oder gelöscht werden sollen --> hier: gibt ein promise zurück das zu einem response Objekt aufgeöst wird.
             rockets = yield response.json();
             for (let rocket of rockets) { //Durchlauf jeder Rakete in Collection rockets
                 let rocketName = document.createElement("a"); //Element a wird erstellt --> in rocketName gespeichert
@@ -160,7 +160,7 @@ var Feuerwerk;
         let particleSizeToConvert;
         let particleSizeValue = Number(particleSizeToConvert);
         console.log(particleSizeTarget);
-        let firework = new Feuerwerk.Firework(tempPosition, lifetimeValue, colorValue, amountValue, explosionValue, particleTypeValue, particleSizeValue * fps / 2);
+        let firework = new Feuerwerk.Firework(tempPosition, particleTypeValue, colorValue, amountValue, explosionValue, particleSizeValue, lifetimeValue * fps / 2);
         fireworks.push(firework);
     }
     function update() {
