@@ -162,34 +162,28 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     }
 
-    function createFirework(tempPosition: Vector) {                                     //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
+    function createFirework(tempPosition: Vector) {    
+        console.log("create firework");                              //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
                                                                                          
        let explosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
        let explosionValue = Number(explosionTarget);
-      
+        console.log(explosionValue);
 
         let lifetimeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("lifetime_f");
-        let lifetimeToConvert = "lifetime_f";
-        let lifetimeValue = Number(lifetimeToConvert);
-        console.log(lifetimeTarget);
+        let lifetimeValue = Number(lifetimeTarget);
     
         let colorTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("color");
         let colorValue: string = colorTarget.value;
 
         let amountTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("amount");
-        let amountToConver = "amount";
-        let amountValue = Number(amountToConver);
-        console.log(amountTarget);
-
+        let amountValue = Number(amountTarget);
 
         let particleTypeTarget: HTMLSelectElement = <HTMLSelectElement>document.getElementById("particleType");
         let particleTypeValue = Number(particleTypeTarget);
       
 
         let particleSizeTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("Size_P");
-        let particleSizeToConvert: ("Size_P");
-        let particleSizeValue = Number(particleSizeToConvert);
-        console.log(particleSizeTarget);
+        let particleSizeValue = Number(particleSizeTarget);
 
         let firework: Firework = new Firework(tempPosition, particleTypeValue, colorValue, amountValue, explosionValue,particleSizeValue, lifetimeValue * fps / 2);
         fireworks.push(firework);
