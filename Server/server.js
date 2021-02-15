@@ -20,9 +20,8 @@ var Feuerwerk;
     function startServer() {
         console.log("start_server");
         let server = Http.createServer();
-        let port = process.env.PORT;
-        if (port == undefined)
-            port = 5001;
+        let port = process.env.PORT; //was macht der port?
+        port = 5001;
         console.log("Server starting on port:" + port);
         server.listen(port);
         server.addListener("request", handleRequest);
@@ -92,8 +91,8 @@ var Feuerwerk;
             _response.end();
         });
     }
-    function storeRocket(data) {
-        rocket.insertOne(data); //Speichern der Daten in rocket (mongo client)
+    function storeRocket(_data) {
+        rocket.insertOne(_data); //Speichern der Daten in rocket (mongo client)
     }
 })(Feuerwerk = exports.Feuerwerk || (exports.Feuerwerk = {}));
 //# sourceMappingURL=server.js.map

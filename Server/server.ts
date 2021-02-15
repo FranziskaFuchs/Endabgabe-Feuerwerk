@@ -4,12 +4,12 @@ import * as  Mongo  from "mongodb";
 
 
 
-export namespace Feuerwerk {
+export namespace Feuerwerk {            //Was macht Interfache Rocket?
     interface Rocket {
         [type: string]: string | string[];
     }
 
-    let rocket: Mongo.Collection;
+    let rocket: Mongo.Collection;          
     let databaseUrl: string = "mongodb+srv://user1:Mondsilbertraum1@eia2.482ba.mongodb.net/Firework?retryWrites=true&w=majority"
     
     startServer();
@@ -20,8 +20,7 @@ export namespace Feuerwerk {
 
         let server: Http.Server = Http.createServer();
 
-        let port: number | string | undefined = process.env.PORT;
-        if (port == undefined)
+        let port: number | string | undefined = process.env.PORT;         //was macht der port?
             port = 5001;
 
         console.log("Server starting on port:" + port);
@@ -98,8 +97,8 @@ export namespace Feuerwerk {
         _response.end();
     }
 
-    function storeRocket(data: Rocket): void {
-        rocket.insertOne(data);                                                                //Speichern der Daten in rocket (mongo client)
+    function storeRocket(_data: Rocket): void {
+        rocket.insertOne(_data);                                                                //Speichern der Daten in rocket (mongo client)
     }
 
 
