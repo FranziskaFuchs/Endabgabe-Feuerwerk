@@ -7,25 +7,25 @@ var Feuerwerk;
             console.log(_lifetime); //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
-            this.Amount = _amount;
+            this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
             this.particleType = _particleType;
             switch (_particleType) {
                 case 0:
-                    for (let i = 0; i < this.Amount; i++) {
+                    for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Rectangle(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
                     break;
                 case 1:
-                    for (let i = 1; i < this.Amount; i++) {
+                    for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Dot(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Dot");
                     }
                     break;
                 case 2:
-                    for (let i = 2; i < this.Amount; i++) {
+                    for (let i = 0; i < this.amount; i++) {
                         this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_speed, Feuerwerk.Vector.getRandom(-1, 1))));
                         console.log("Line");
                     }

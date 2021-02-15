@@ -2,7 +2,7 @@ namespace Feuerwerk {
     console.log("Particle");
 
     export class Particle {
-        protected position: Vector;
+        protected position: Vector;     //Klasse Particle mit den Eigenschaften position und velocity sowie den Methoden draw und move
         protected velocity: Vector;
 
         constructor() {

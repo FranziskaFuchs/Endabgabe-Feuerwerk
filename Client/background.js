@@ -10,7 +10,6 @@ var Feuerwerk;
         drawSkyline({ x: 0, y: horizon });
         drawSkylinetwo({ x: 0, y: 300 });
         function drawBackground() {
-            // console.log("drawBackground");
             let gradient = Feuerwerk.crc2.createLinearGradient(0, 0, 0, Feuerwerk.crc2.canvas.height);
             gradient.addColorStop(0, "black");
             gradient.addColorStop(0.4, "#0A122A");
@@ -20,7 +19,6 @@ var Feuerwerk;
             Feuerwerk.crc2.fillRect(0, 0, Feuerwerk.crc2.canvas.width, Feuerwerk.crc2.canvas.height);
         }
         function drawMoon(_position) {
-            //console.log("moon",_position);
             let r1 = 35;
             let r2 = 120;
             let gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -34,7 +32,6 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawStar() {
-            //console.log("Star");
             let starCount = 100;
             for (let i = 0; i < starCount; i++) {
                 let x = Math.random() * 1000 + 100;
@@ -43,7 +40,6 @@ var Feuerwerk;
             }
         }
         function drawSingleStar(_position) {
-            // console.log("SingleStar",_position);
             let r1 = 1;
             let r2 = 3;
             let gradient = Feuerwerk.crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -57,7 +53,6 @@ var Feuerwerk;
             Feuerwerk.crc2.restore();
         }
         function drawSkyline(_position) {
-            //  console.log("Skyline");
             Feuerwerk.crc2.save();
             Feuerwerk.crc2.translate(_position.x, _position.y);
             Feuerwerk.crc2.beginPath();

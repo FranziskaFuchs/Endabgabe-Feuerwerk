@@ -6,7 +6,7 @@ namespace Feuerwerk {
         public position: Vector;                      //Werten wird ein Typ zugeordnet
         public color: string;
         public speed: number;
-        public Amount: number;
+        public amount: number;
         public particleRadius: number;
         public particleType: number;
         private lifeTime: number;
@@ -18,7 +18,7 @@ namespace Feuerwerk {
             console.log(_lifetime);     	                             //ist ausschlaggebend wie lanege Rakte sichtbar ist
             this.position = _position;
             this.color = _color;
-            this.Amount = _amount;
+            this.amount = _amount;
             this.particleRadius = _particleRadius;
             this.lifeTime = _lifetime;
             this.particleType = _particleType;
@@ -27,14 +27,14 @@ namespace Feuerwerk {
             switch (_particleType) {
 
                 case 0:
-                    for (let i: number = 0; i < this.Amount; i++) {
+                    for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Rectangle(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Rectangle");
                     }
                     break;
 
                 case 1:
-                    for (let i: number = 1; i < this.Amount; i++) {
+                    for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Dot(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Dot");
 
@@ -42,7 +42,7 @@ namespace Feuerwerk {
                     break;
 
                 case 2:
-                    for (let i: number = 2; i < this.Amount; i++) {
+                    for (let i: number = 0; i < this.amount; i++) {
                         this.particleArray.push(new Line(this.position, Vector.getuberVector(_speed, Vector.getRandom(-1, 1))));
                         console.log("Line");
                     }

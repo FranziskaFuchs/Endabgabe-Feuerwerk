@@ -1,10 +1,11 @@
 namespace Feuerwerk {
     console.log("background")
 
-    interface Vector {
+    interface Vector {                                          // Schnittstelle die eine Syntax definiert
         x: number;
         y: number;
     }
+
 
     export function drawCanvas(): void {
 
@@ -18,7 +19,7 @@ namespace Feuerwerk {
         drawSkylinetwo({ x: 0, y: 300 })
 
         function drawBackground(): void {
-            // console.log("drawBackground");
+
 
             let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
             gradient.addColorStop(0, "black");
@@ -32,7 +33,7 @@ namespace Feuerwerk {
         }
 
         function drawMoon(_position: Vector): void {
-            //console.log("moon",_position);
+
 
             let r1: number = 35;
             let r2: number = 120;
@@ -51,7 +52,7 @@ namespace Feuerwerk {
         }
 
         function drawStar(): void {
-            //console.log("Star");
+
 
             let starCount: number = 100;
 
@@ -64,8 +65,6 @@ namespace Feuerwerk {
         }
 
         function drawSingleStar(_position: Vector): void {
-            // console.log("SingleStar",_position);
-
 
             let r1: number = 1;
             let r2: number = 3;
@@ -84,7 +83,6 @@ namespace Feuerwerk {
         }
 
         function drawSkyline(_position: Vector): void {
-            //  console.log("Skyline");
 
             crc2.save();
             crc2.translate(_position.x, _position.y);
