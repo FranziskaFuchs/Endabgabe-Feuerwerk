@@ -85,7 +85,7 @@ export namespace Feuerwerk {
     async function updateRocket(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         let oldName: string | string[] = url.query["rocket"];
-        let rocketName: string | string[] = url.query["rocketName"];
+        let rocketName: string | string[] = url.query["Name"];
         let rocketExplosion: string | string[] = url.query["ExplosionSize"];
         let rocketLifetime: string | string[] = url.query["Lifetime"];
         let rocketColor: string | string[] = url.query["Color"];

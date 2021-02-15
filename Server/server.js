@@ -80,7 +80,7 @@ var Feuerwerk;
         return __awaiter(this, void 0, void 0, function* () {
             let url = Url.parse(_request.url, true);
             let oldName = url.query["rocket"];
-            let rocketName = url.query["rocketName"];
+            let rocketName = url.query["Name"];
             let rocketExplosion = url.query["ExplosionSize"];
             let rocketLifetime = url.query["Lifetime"];
             let rocketColor = url.query["Color"];

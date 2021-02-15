@@ -91,27 +91,27 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     function chooseRocket(_event: Event): void {
         currentRocket = (<HTMLElement>_event.target).innerHTML;                                          //currentRocket entspricht Rakete die angezeigt werden soll
-        let parent = (<HTMLElement>document.querySelector("div#dropupContent"));                        
+        let parent = (<HTMLElement>document.querySelector("div#dropupContent"));
         parent.style.display = "none";
 
-       while (parent.firstChild) {
+        while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
 
         for (let rocket of rockets) {                                                                   //Durchlauf jeder Rakete in Collection rockets
             if (rocket["rocketName"] == currentRocket) {                                                //entspricht der jeweilige Eintrag in db dem geklickter Wert von currentRocket?   
-                                                                                                        
+
                 (<HTMLInputElement>document.querySelector("div#rocketlist")).innerHTML = "Name: " + "<br>" + rocket["rocketName"] + "<br>" + "Explosion:  " + rocket["ExplosionSize"] + "<br>" + "Lifetime: " + rocket["Lifetime"] + "<br" + "sec" + "<br>" + "Color: " + rocket["Color"] + "<br>" + "Amount of Particles: " + rocket["Amount"] + "<br>" + "stk." + "<br>" + "Type of Paricle: " + rocket["ParticleType"] + "<br>" + "Size of Particle: " + rocket["ParticleSize"];    //ja: Schlüssel-Werte-Paare sollen wieder in yourorder div gepusht werden
                 fillRocketFields(rocket);
             }
         }
 
-       buttonClicked++; //Arithmetischer Operator: Zuwachs
+        buttonClicked++; //Arithmetischer Operator: Zuwachs
     }
-//Raket wird mit den Daten des Formulars gefüllt 
-    function fillRocketFields(rocket: any): void { 
+    //Raket wird mit den Daten des Formulars gefüllt 
+    function fillRocketFields(rocket: any): void {
         (<HTMLInputElement>document.querySelector("input#rocketname")).value = rocket["rocketName"];
-        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];          
+        (<HTMLInputElement>document.querySelector("input#explosion")).value = rocket["ExplosionSize"];
         (<HTMLInputElement>document.querySelector("input#lifetime_f")).value = rocket["Lifetime"];
         (<HTMLSelectElement>document.querySelector("select#color")).value = rocket["Color"];
         (<HTMLInputElement>document.querySelector("input#amount")).value = rocket["Amount"];
@@ -197,7 +197,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
 
         for (let i: number = fireworks.length - 1; i >= 0; i--) {           //solange noch Daten im Firework Array sind, wird die function update ausgeführt, firework ist also noch Alive 
-                                                                                //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
+            //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
             fireworks[i].draw();
             fireworks[i].update();
             if (!fireworks[i].isAlive()) {
