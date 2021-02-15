@@ -65,6 +65,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         alert(responseText);                                                                                                    //daraufhin wird dem Nutzer ein response Text per alert zurückgegeben
     }
     function resetRocketlist(): void {
+        console.log("reset");
         document.forms[0].reset();                                                              //Methode reset stellt Standartwerte eines Formulars wieder her
         (<HTMLInputElement>document.getElementById("rocketlist")).innerHTML = "";               //Inhalt im div leeren
     }

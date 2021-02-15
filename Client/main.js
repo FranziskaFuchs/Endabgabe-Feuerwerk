@@ -54,6 +54,7 @@ var Feuerwerk;
         });
     }
     function resetRocketlist() {
+        console.log("reset");
         document.forms[0].reset(); //Methode reset stellt Standartwerte eines Formulars wieder her
         document.getElementById("rocketlist").innerHTML = ""; //Inhalt im div leeren
     }
