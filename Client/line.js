@@ -8,7 +8,7 @@ var Feuerwerk;
             this.position.y = _position.y;
             this.velocity = _velocity;
         }
-        draw(_color) {
+        draw(_color, _particleRadius) {
             Feuerwerk.crc2.beginPath();
             Feuerwerk.crc2.fillStyle = _color;
             Feuerwerk.crc2.lineTo(this.position.x, this.position.y);

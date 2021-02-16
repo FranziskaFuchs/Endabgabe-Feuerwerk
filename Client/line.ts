@@ -10,7 +10,7 @@ namespace Feuerwerk {
             this.velocity = _velocity;
         }
 
-        public draw(_color: string): void {
+        public draw(_color: string, _particleRadius: number): void {
             crc2.beginPath();
             crc2.fillStyle = _color;
             crc2.lineTo(this.position.x, this.position.y);
