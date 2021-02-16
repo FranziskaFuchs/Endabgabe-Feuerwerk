@@ -1,11 +1,11 @@
-namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globaler Bereich soll dadurch nicht verschmutzt werden)
+namespace Feuerwerk {                                                                   //Teile des Canvas Codes sind von Moritz Stein inspiriert.
 
-    window.addEventListener("load", handleLoad);   // "load" = Ereignistyp auf den gewartet werden soll ; handleLoad: Objekt das die Benachrichtigung erhält
+    window.addEventListener("load", handleLoad);   
 
 
-    let url: string = "https://fireworkendabgabe.herokuapp.com"; //Verbindung zu Heroku 
+    let url: string = "https://fireworkendabgabe.herokuapp.com"; 
     let buttonClicked: number = 0;
-    let rockets: any; //rocket nimmt alle Daten des Formulars entgegen und bildet daraus eine Rakete
+    let rockets: any;   	                                                            //rocket nimmt alle Daten des Formulars entgegen und bildet daraus eine Rakete
     let currentRocket: string;
     export let imgData: ImageData;
     export let crc2: CanvasRenderingContext2D;
@@ -13,7 +13,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     let fireworks: Firework[] = [];
     let fps: number = 10;
-    let canvas: HTMLCanvasElement | null;              // fps= frames per second
+    let canvas: HTMLCanvasElement | null;              // fps = frames per second
 
 
     function handleLoad(_event: Event): void {
@@ -21,15 +21,15 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         form = <HTMLFormElement>document.querySelector("form");
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
-        if (!canvas)                                    //gibt false zurück, wenn sein einziger Operand in true konvertiert werden kann-->kann als boolescher Wert betrachtet werden(ist ein logischer Operator der einen Wahrheitswert zurück gibt)
+        if (!canvas)                                                  //gibt false zurück, wenn sein einziger Operand in true konvertiert werden kann-->kann als boolescher Wert betrachtet werden(ist ein logischer Operator der einen Wahrheitswert zurück gibt)
             return;
 
-        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d"); //dem Canvas wird der Kontext 2d zugewiesen & crc2 wird definiert-->gibz Zeichnungskodex oder null zurück(wenn Kontextnennung nicht unterstützt wird, wird null zurück gegeben)
+        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d"); 
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);  //implementierung meines Hintergrunds
 
         drawCanvas();          //verbindung zu drawCanvas in Background.ts
 
-        // den Button werden EventListener gegeben, damit sie auf ein "click" Event lauschen, dass dann in der jeweiligen Funktion ausgeführt wird.
+       
 
         (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket); //stellt die Rakte in der rocketlist da
         (<HTMLInputElement>document.querySelector("#updateButton")).addEventListener("click", updateRocket); //damit kann das Formular geupdatet werden
@@ -41,26 +41,26 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
 
 
-        canvas.addEventListener("click", handleClick); //Canvas bekommt ebenfalls ein "click" Event, damit er reagieren kann, wenn Nutzer Rakete zum explodieren bringen will.
-        window.setInterval(update, 10 / fps); //in diesem Intervall wird das Fenster geupdatet 
+        canvas.addEventListener("click", handleClick); 
+        window.setInterval(update, 10 / fps); 
 
     }
 
     //Teil 1: Client 
 
     function displayRocket(): void {  
-        console.log("display Rocket");                          // In dieser Funktion wird auf das Formular zugegriffen, aus dem die Raketendaten geholt werden 
+        console.log("display Rocket");                         
         let formComponents: FormData = new FormData(document.forms[0]); //das Neue FormData Element wird mit den Schlüssel-Werte Paaren aus dem Formular gefüllt--> alle Formulare werden eigens vom Programm verwaltet und da ich nur eines habe, greift man auf die Stelle 0 des Arrays zu 
         let rocket = "Name of your rocket: " + formComponents.get("rocketName") + "<br>" + "Explosion: " + formComponents.get("ExplosionSize") + "<br>" + "Lifetime: " + formComponents.get("Lifetime") + "sec" + "<br>" + "Color: " + formComponents.get("Color") + "<br>" + "Amount of Particle: " + formComponents.get("Amount") + "stk." + "<br>" + "Type of Particle: " + formComponents.get("ParticleType") + "<br>" + "Size of Particle: " + formComponents.get("ParticleSize") + "pixel"; //Schlüssel-Werte Paare werden in Typescript gespeichert
 
-        (<HTMLDivElement>document.querySelector("div#rocketlist")).innerHTML = rocket; //damit sollen die Daten/Die Rakete, der rocketlist hinzugefüht werden 
+        (<HTMLDivElement>document.querySelector("div#rocketlist")).innerHTML = rocket; 
     }
 
     async function updateRocket(): Promise<void> {
         console.log("update Rocket");
-        let newData: FormData = new FormData(document.forms[0]);                   //update des Formulars -->anschließend wird mit await fetch eine POP UP ausgabe zurück gegeben
+        let newData: FormData = new FormData(document.forms[0]);                  
         let query: URLSearchParams = new URLSearchParams(<any>newData);            //umformatieren um url mitgeben zu können
-        let response: Response = await fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString()); //Schlüsselwort await ist eine syntaktische Abkürzung, die anzeigt, dass ein Codeteil asynchron auf einen anderen warten soll
+        let response: Response = await fetch(url + "?" + "command=update&rocket=" + currentRocket + "&" + query.toString()); 
         let responseText: string = await response.text();                                                                      //fetch holt sich die URL und die Befehle update, sowie Rocket und fügt sie dem current Rocket hinzug & ordnet einen query zu
         alert(responseText);                                                                                                    //daraufhin wird dem Nutzer ein response Text per alert zurückgegeben
     }
@@ -167,7 +167,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
     function createFirework(tempPosition: Vector) {    
         console.log("create firework");                              //tempPosition ist eine Methode von createFirework und wird als Vector dargestellt
                                                                                          
-       let explosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");  //createFirework holt sich die Input Elemente über deren ID und erstellt damit das gewünscht Feuerwerk des Nutzers
+       let explosionTarget: HTMLInputElement = <HTMLInputElement>document.getElementById("explosion");  
        let explosionValue = Number(explosionTarget.value);
         console.log(explosionValue);
 
@@ -194,7 +194,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
     function update() {
         //Der Hintergrund wird geupdatet
-        let canvas: HTMLCanvasElement | null; //null= primitiver TypeScript Wert
+        let canvas: HTMLCanvasElement | null; 
 
 
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
@@ -207,8 +207,8 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
         drawCanvas();
 
 
-        for (let i: number = fireworks.length - 1; i >= 0; i--) {           //solange noch Daten im Firework Array sind, wird die function update ausgeführt, firework ist also noch Alive 
-            //sobald i>= 0 ist, wird die Funktion beendet und das Feuerwerk ebenso
+        for (let i: number = fireworks.length - 1; i >= 0; i--) {          
+           
             fireworks[i].draw();
             fireworks[i].update();
             if (!fireworks[i].isAlive()) {

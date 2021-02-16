@@ -7,7 +7,7 @@ var Feuerwerk;
         draw(_color, _particleRadius) {
         }
         move() {
-            this.velocity = Feuerwerk.Vector.getSum(this.velocity, new Feuerwerk.Vector(0, 0.01)); //Gravitaion
+            this.velocity = Feuerwerk.Vector.getSum(this.velocity, new Feuerwerk.Vector(0, 0.01));
             this.position = Feuerwerk.Vector.getSum(this.position, this.velocity);
         }
     }

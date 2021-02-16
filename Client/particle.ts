@@ -2,7 +2,7 @@ namespace Feuerwerk {
     console.log("Particle");
 
     export class Particle {
-        protected position: Vector;     //Klasse Particle mit den Eigenschaften position und velocity sowie den Methoden draw und move
+        protected position: Vector;     
         protected velocity: Vector;
 
         constructor() {
@@ -13,7 +13,7 @@ namespace Feuerwerk {
         }
 
         public move(): void {
-            this.velocity = Vector.getSum(this.velocity, new Vector(0, 0.01)) //Gravitaion
+            this.velocity = Vector.getSum(this.velocity, new Vector(0, 0.01)); 
             this.position = Vector.getSum(this.position, this.velocity);
         }
     }

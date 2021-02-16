@@ -9,7 +9,7 @@ namespace Feuerwerk {
             this.y = _y;
             this.calcLength();
         }
-//Statische Methoden werden ohne Instanzierung einer Klasse aufgerufen und sind über eine erzeugte Instanz nicht aufrufbar. Oft werden in statische Methoden für Hilfsfunktionen verwendet.
+
         public static getRandom(_min: number, _max: number): Vector {
             let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_min + Math.random() * (_max - _min), _min + Math.random() * (_max - _min));

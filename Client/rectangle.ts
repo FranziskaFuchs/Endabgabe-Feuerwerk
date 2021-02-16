@@ -1,6 +1,6 @@
 namespace Feuerwerk{
     console.log("Rectangle");
-    export class Rectangle extends Particle{             //Rectangel ist eine Subklasse von Particle
+    export class Rectangle extends Particle{             
 
         constructor(_positon:Vector, _velocity:Vector){
             super();
