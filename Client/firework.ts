@@ -40,13 +40,6 @@ namespace Feuerwerk {
                     }
                     break;
 
-                case 2:
-                    for (let i: number = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Triangle(this.position, Vector.getuberVector(_explosion, Vector.getRandom(-1, 1))));
-                        console.log("Triangle");
-                    }
-                    break;
-
                 default: console.log("wrong type")
                     return;
                 // wenn keiner der gennanten Typen ausgewählt wurde, wird "wrong type" ausgegeben.                    

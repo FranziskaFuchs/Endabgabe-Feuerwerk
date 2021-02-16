@@ -22,12 +22,6 @@ var Feuerwerk;
                         console.log("Dot");
                     }
                     break;
-                case 2:
-                    for (let i = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Feuerwerk.Triangle(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
-                        console.log("Triangle");
-                    }
-                    break;
                 default:
                     console.log("wrong type");
                     return;
