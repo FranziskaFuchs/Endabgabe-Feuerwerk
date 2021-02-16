@@ -14,7 +14,7 @@ namespace Feuerwerk {
 
         protected particleArray: Particle[] = [];                        //im Particle Array, werden die gewählten Partikel gelistet
 
-        constructor(_position: Vector, _particleTypeValue: number, _color: string, _amount: number, _explosion: number, _particleRadius: number, _lifetime: number) {
+        constructor(_position: Vector, _particleType: number, _color: string, _amount: number, _explosion: number, _particleRadius: number, _lifetime: number) {
 
             this.position = _position;
             this.color = _color;
@@ -23,7 +23,7 @@ namespace Feuerwerk {
             this.lifeTime = _lifetime;
 
 
-            switch (_particleTypeValue) {
+            switch (_particleType) {
 
                 case 0:
                     for (let i: number = 0; i < this.amount; i++) {                            //i wird gleich 0 gesetzt, solange i kliener als die Anzahl ist wird in das particle Array ein neues Rectangel gepusht 
