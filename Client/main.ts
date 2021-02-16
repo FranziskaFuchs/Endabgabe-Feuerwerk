@@ -33,7 +33,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         (<HTMLInputElement>document.querySelector("#displayButton")).addEventListener("click", displayRocket); //stellt die Rakte in der rocketlist da
         (<HTMLInputElement>document.querySelector("#updateButton")).addEventListener("click", updateRocket); //damit kann das Formular geupdatet werden
-        (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetRocketlist);//damit werden alle Raketen aus der rocketlist gelöscht-->sie wird reseted
+        (<HTMLInputElement>document.querySelector("#resetButton")).addEventListener("click", resetRocketlist);//damit werden alle Rakete aus der rocketlist gelöscht-->sie wird reseted
         (<HTMLInputElement>document.querySelector("#saveButton")).addEventListener("click", saveRocket);//schicken der Rakete an den Server-->Server gibt ein POP UP Fenster mit den Daten der Rakete zurück
         (<HTMLInputElement>document.querySelector("#deleteButton")).addEventListener("click", deleteRocket); //current Rocket wird gelöscht
         (<HTMLInputElement>document.querySelector("#dropButton")).addEventListener("click", showSavedRockets);  //Rakten werden aus der Datenbank zurückgeholt und in die Rocketlist gepusht
@@ -141,7 +141,7 @@ namespace Feuerwerk {  // zur organisation des Codes in seperaten Dateien (Globa
 
         if (buttonClicked % 2 == 0) {                                                                    //button geklickt = gerade Zahl (auf)
             getSavedRocketsFromDb();
-            parent.style.display = "block";
+            parent.style.display = "block" + "<br>";
         }
         else {                                                                                           //button nochmal geklickt = ungerade (zu)
             parent.style.display = "none";

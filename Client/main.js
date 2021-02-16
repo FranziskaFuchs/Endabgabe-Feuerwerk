@@ -29,7 +29,7 @@ var Feuerwerk;
         // den Button werden EventListener gegeben, damit sie auf ein "click" Event lauschen, dass dann in der jeweiligen Funktion ausgeführt wird.
         document.querySelector("#displayButton").addEventListener("click", displayRocket); //stellt die Rakte in der rocketlist da
         document.querySelector("#updateButton").addEventListener("click", updateRocket); //damit kann das Formular geupdatet werden
-        document.querySelector("#resetButton").addEventListener("click", resetRocketlist); //damit werden alle Raketen aus der rocketlist gelöscht-->sie wird reseted
+        document.querySelector("#resetButton").addEventListener("click", resetRocketlist); //damit werden alle Rakete aus der rocketlist gelöscht-->sie wird reseted
         document.querySelector("#saveButton").addEventListener("click", saveRocket); //schicken der Rakete an den Server-->Server gibt ein POP UP Fenster mit den Daten der Rakete zurück
         document.querySelector("#deleteButton").addEventListener("click", deleteRocket); //current Rocket wird gelöscht
         document.querySelector("#dropButton").addEventListener("click", showSavedRockets); //Rakten werden aus der Datenbank zurückgeholt und in die Rocketlist gepusht
@@ -121,7 +121,7 @@ var Feuerwerk;
         let parent = document.querySelector("div#dropupContent");
         if (buttonClicked % 2 == 0) { //button geklickt = gerade Zahl (auf)
             getSavedRocketsFromDb();
-            parent.style.display = "block";
+            parent.style.display = "block" + "<br>";
         }
         else { //button nochmal geklickt = ungerade (zu)
             parent.style.display = "none";

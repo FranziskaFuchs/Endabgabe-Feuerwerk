@@ -47,13 +47,16 @@ button:hover{
 }
 
 #canvasContainer{
-    margin-top: -69em;
+    margin-top: -80em;
     position:relative;
     float: right;
     border:solid;
 }
 
 #dropupContent{
+    background: rgb(173, 50, 71);
+    font-size: 1em;
+    text-align: center;
     margin:auto;
     border: solid;
     color: white;
