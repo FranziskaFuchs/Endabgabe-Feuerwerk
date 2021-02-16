@@ -24,8 +24,8 @@ var Feuerwerk;
                     break;
                 case 2:
                     for (let i = 0; i < this.amount; i++) {
-                        this.particleArray.push(new Feuerwerk.Line(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
-                        console.log("Line");
+                        this.particleArray.push(new Feuerwerk.Triangle(this.position, Feuerwerk.Vector.getuberVector(_explosion, Feuerwerk.Vector.getRandom(-1, 1))));
+                        console.log("Triangle");
                     }
                     break;
                 default:
